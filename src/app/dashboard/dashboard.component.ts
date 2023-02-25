@@ -18,7 +18,7 @@ export class DashboardComponent {
     console.log(`Composant app initialized`);
   }
   testGetApi = () => {
-    this.http.get<undefined>('http://127.0.0.1:3007/api/test/angular',
+    this.http.get<undefined>('http://127.0.0.1:3007/dompro_sftp_sync/api/test/angular',
       { headers: this.headers})
       .subscribe(data => {
         console.log('Données souscrites : ',data);
@@ -26,7 +26,7 @@ export class DashboardComponent {
       })
   }
   testPostApi = () => {
-    this.http.post<undefined>('http://127.0.0.1:3007/api/test/angular',
+    this.http.post<undefined>('http://127.0.0.1:3007/dompro_sftp_sync/api/test/angular',
       JSON.stringify({ "title": "Test de la requete vers le backend"}),
       { headers: this.headers})
       .subscribe(data => {
@@ -36,7 +36,7 @@ export class DashboardComponent {
   }
   testCallApi:any = async () => {
     console.log(`action testCallApi`);
-    this.http.post<any>('http://127.0.0.1:3007/api/test/angular',{ title: 'Test de la requete vers le backend'})
+    this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/api/test/angular',{ title: 'Test de la requete vers le backend'})
       .subscribe(data => {
         console.log('Données souscrites : ',data);
         this.callBackDomproSync = data;
