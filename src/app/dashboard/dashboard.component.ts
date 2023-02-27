@@ -47,6 +47,20 @@ export class DashboardComponent {
       )
   }
 
+  pushToHostingerCon:any = async () => {
+    console.log(`appel de la methode pushToHostingerCon`);
+    try {
+      console.log(`trying`);
+      this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/sync/remote_child', {})
+      .subscribe(data => {
+        console.log('Donnée souscrite', data);
+      })
+    } catch(err) {
+      if (err) throw err;
+    }
+
+  }
+
   // Méthode de test de lancement de la synchronisation des données depuis le serveur node
   testDomproSftpSync:any = async () => {
     this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/sync/start',{ title: 'Test de la requete vers le backend'})
