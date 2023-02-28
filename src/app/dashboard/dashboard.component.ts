@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 
 export class DashboardComponent {
+  active_presta_upd_price_qty=true;
   title = 'angular_app';
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
@@ -25,9 +26,12 @@ export class DashboardComponent {
         this.callBackDomproSync = data;
       })
   }
+  // Methode de test des differents resultat possible pour la définition mode de récupération des données en format json, la dernière récupération ayant été un succes pour plusieurs fois...
+
+  // Alors la dernière fois
   testPostApi = () => {
-    this.http.post<undefined>('http://127.0.0.1:3007/dompro_sftp_sync/api/test/angular',
-      JSON.stringify({ "title": "Test de la requete vers le backend"}),
+    this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/api/test2/angular',
+      { title: 'Test de la requete vers le backend'},
       { headers: this.headers})
       .subscribe(data => {
         console.log('Données souscrites : ',data);
@@ -63,7 +67,8 @@ export class DashboardComponent {
 
   // Méthode de test de lancement de la synchronisation des données depuis le serveur node
   testDomproSftpSync:any = async () => {
-    this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/sync/start',{ title: 'Test de la requete vers le backend'})
+    this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/sync/start',{ title: 'Synchronisation des fichiers csv vers Prestashop et base de backup'},
+    { headers: this.headers})
       .subscribe(data => {
         console.log('Données souscrites : ',data);
         this.callBackDomproSync = data;
@@ -78,4 +83,26 @@ export class DashboardComponent {
         this.callBackDomproSync = data;
       })
   }
+  leblancDomproAndDivaltoToPrestashop:any = async () => {
+    console.log('variable activation :', this.active_presta_upd_price_qty);
+    this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/readCSV/start',{ title: 'Synchronisation des fichiers csv vers Prestashop et base de backup', updPresta: true},
+    { headers: this.headers})
+      .subscribe(data => {
+        console.log('Données souscrites : ',data);
+        this.callBackDomproSync = data;
+      })
+  }
+  // _________________________________________________
+  // Méthode de requete API vers Node server pour tester la connection à la base sql server de Divalo
+  testSqlServDivaltoConnect:any = async () => {
+    console.log('variable activation :', this.active_presta_upd_price_qty);
+    this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/sqlserver/test',{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
+    { headers: this.headers})
+      .subscribe(data => {
+        console.log('Données souscrites : ',data);
+        this.callBackDomproSync = data;
+      })
+  }
+
+
 }
