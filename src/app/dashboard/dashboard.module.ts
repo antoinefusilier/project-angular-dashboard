@@ -9,6 +9,8 @@ import { ResultComponent } from './dompro-sync/result/result.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DivaltoSyncComponent } from './divalto-sync/divalto-sync.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ProductsManagmentComponent } from './products-managment/products-managment.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     ResultComponent,
     SidebarComponent,
     DivaltoSyncComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ProductsManagmentComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
