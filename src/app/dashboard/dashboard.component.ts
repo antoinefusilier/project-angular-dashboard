@@ -83,15 +83,7 @@ export class DashboardComponent {
         this.callBackDomproSync = data;
       })
   }
-  leblancDomproAndDivaltoToPrestashop:any = async () => {
-    console.log('variable activation :', this.active_presta_upd_price_qty);
-    this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/readCSV/start',{ title: 'Synchronisation des fichiers csv vers Prestashop et base de backup', updPresta: true},
-    { headers: this.headers})
-      .subscribe(data => {
-        console.log('Données souscrites : ',data);
-        this.callBackDomproSync = data;
-      })
-  }
+ 
   // _________________________________________________
   // Méthode de requete API vers Node server pour tester la connection à la base sql server de Divalo
   testSqlServDivaltoConnect:any = async () => {
