@@ -10,17 +10,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'h',
-    component: AppComponent,
-    children: [
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module')
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module')
         .then(m => m.DashboardModule),
-        canActivate: [AuthGuard]
-      },
-    ]
-  },
+    canActivate: [AuthGuard]},
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 
 

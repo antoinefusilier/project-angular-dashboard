@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { DomproSyncComponent } from './dompro-sync/dompro-sync.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -9,8 +10,17 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'welcome',
+        pathMatch: 'full'
+      },
+      {
         path: 'dpro',
         component: DomproSyncComponent
+      },
+      {
+        path: 'welcome',
+        component: WelcomeComponent
       }
     ]
   }
