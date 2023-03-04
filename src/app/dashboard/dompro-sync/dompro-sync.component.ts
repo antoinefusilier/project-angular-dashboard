@@ -1,15 +1,19 @@
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { emitDistinctChangesOnlyDefaultValue } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component,ViewChild,AfterViewChecked, AfterViewInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ChildDirective, ResultComponent } from './result/result.component';
+
 
 @Component({
   selector: 'app-dompro-sync',
   templateUrl: './dompro-sync.component.html',
   styleUrls: ['./dompro-sync.component.css']
 })
-export class DomproSyncComponent {
+export class DomproSyncComponent implements AfterViewChecked, AfterViewInit {
   active_presta_upd_price_qty=true;
-  callBackDomproSync: any;
+  callBackDomproSync: Observable<any> = new Observable();
+  // @ViewChild(ResultComponent) viewChildren!: ResultComponent
 
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
@@ -17,6 +21,14 @@ export class DomproSyncComponent {
   })
   constructor (private http: HttpClient) {
 
+  }
+
+  ngAfterViewInit(): void {
+    console.log(`AfterViewInit`);
+  }
+
+  ngAfterViewChecked(): void {
+    console.log(`AfterViewChecked`);
   }
   leblancDomproAndDivaltoToPrestashop:any = async () => {
     console.log('variable activation :', this.active_presta_upd_price_qty);
@@ -29,14 +41,14 @@ export class DomproSyncComponent {
   }
 
   domproGetFiles:any = async () => {
-    this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/sync/start',{ title: 'Test de la requete vers le backend'})
-      .subscribe(data => {
-        console.log('Données souscrites : ',data);
-        this.callBackDomproSync = data;
-        if (data){
-          console.log('données reçues ... ')
-        }
-      })
+    this.callBackDomproSync = this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/sync/start',{ title: 'Test de la requete vers le backend'})
+      // .subscribe(data => {
+      //   console.log('Données souscrites : ',data);
+      //   // this.callBackDomproSync = data;
+      //   if (data){
+      //     console.log('données reçues ... ')
+      //   }
+      // })
   }
 
 }
