@@ -51,4 +51,11 @@ export class DomproSyncComponent implements AfterViewChecked, AfterViewInit {
       // })
   }
 
+  hostingerTestFtp: any = async () => {
+    this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/ftp/test_hostinger',{ title: 'Test de connection au serveur de fichier'}, { headers: this.headers})
+    .subscribe(data => {
+      console.log(`Retour de l'appel api hostingerTestFtp ${data}`);
+    })
+  }
+
 }
