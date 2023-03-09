@@ -4,6 +4,9 @@ import { DashboardComponent } from './dashboard.component';
 import { DivaltoSyncComponent } from './divalto-sync/divalto-sync.component';
 import { DomproSyncComponent } from './dompro-sync/dompro-sync.component';
 import { ProductsManagmentComponent } from './products-managment/products-managment.component';
+import { AccountComponent } from './settings/account/account.component';
+import { PrestashopComponent } from './settings/prestashop/prestashop.component';
+import { SettingsComponent } from './settings/settings.component';
 import { UsersComponent } from './users/users.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
@@ -36,6 +39,27 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
+        children: [
+          // {
+          //   path: '',
+          //   redirectTo: 'account',
+          //   pathMatch: 'full',
+          // },
+          {
+            path: 'account',
+            component: AccountComponent,
+            outlet: 'settings'
+          },
+          {
+            path: 'prestashop',
+            component: PrestashopComponent,
+            outlet: 'settings'
+          }
+        ]
       }
     ]
   }

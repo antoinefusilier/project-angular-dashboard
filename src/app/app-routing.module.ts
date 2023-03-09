@@ -6,15 +6,25 @@ import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/h',
+    redirectTo: 'auth',
     pathMatch: 'full'
   },
+  // Module dahboard Guard by AuthUser
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module')
         .then(m => m.DashboardModule),
     canActivate: [AuthGuard]},
-  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  // Module auth
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  // Module admin Guard by AuthAdmin
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
 
 
 ];

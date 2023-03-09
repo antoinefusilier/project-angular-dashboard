@@ -12,6 +12,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductsManagmentComponent } from './products-managment/products-managment.component';
 import { UsersComponent } from './users/users.component';
 import { TestComponent } from './dompro-sync/test/test.component';
+import { HeaderComponent } from './header/header.component';
+import { SettingsComponent } from './settings/settings.component';
+import { PrestashopComponent } from './settings/prestashop/prestashop.component';
+import { AccountComponent } from './settings/account/account.component';
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { TestComponent } from './dompro-sync/test/test.component';
     ProductsManagmentComponent,
     UsersComponent,
     ChildDirective,
-    TestComponent
+    TestComponent,
+    HeaderComponent,
+    SettingsComponent,
+    PrestashopComponent,
+    AccountComponent
   ],
   imports: [
     CommonModule,

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { initializeApp } from 'firebase/app';
+import { environment as env } from 'src/environments/environment.development';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,4 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(){
+    const app = initializeApp(env.firebaseConfig);
+  }
+}
