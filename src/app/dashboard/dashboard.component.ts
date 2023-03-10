@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 
 export class DashboardComponent {
+
   active_presta_upd_price_qty=true;
   title = 'angular_app';
   headers = new HttpHeaders({
@@ -15,9 +18,20 @@ export class DashboardComponent {
   })
   callBackDomproSync:any;
 
-  constructor(private http: HttpClient){
+  constructor(
+    private http: HttpClient,
+    private Uservice: UserService,
+    private router_: Router){
     console.log(`Composant app initialized`);
+
+
   }
+  testParseRouteData = () => {
+    this.router_.navigate(['dashboard','settings',{outlets: {settings: ['account']}, state: {
+      currentUserInfo: 'le test current user info'
+    }}])
+  }
+
   testGetApi = () => {
     this.http.get<undefined>('http://127.0.0.1:3007/dompro_sftp_sync/api/test/angular',
       { headers: this.headers})
@@ -29,7 +43,7 @@ export class DashboardComponent {
   // Methode de test des differents resultat possible pour la définition mode de récupération des données en format json, la dernière récupération ayant été un succes pour plusieurs fois...
 
   // Alors la dernière fois
-  
+
 
   pushToHostingerCon:any = async () => {
     console.log(`appel de la methode pushToHostingerCon`);
@@ -56,10 +70,10 @@ export class DashboardComponent {
   }
 
   //
-  
- 
+
+
   // _________________________________________________
-  
+
 
 
 }

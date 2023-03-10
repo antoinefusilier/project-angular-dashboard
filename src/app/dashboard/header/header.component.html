@@ -25,7 +25,7 @@
       </div>
       <div class="ml-10 flex flex-shrink-0 items-center space-x-10 pr-4">
         <nav aria-label="Global" class="flex space-x-10">
-          <a href="#" class="text-sm font-medium text-gray-900">Inboxes</a>
+          <a [routerLink]="['i',{outlets: {alerts: 'i'}}]" class="text-sm font-medium text-gray-900">Alerts</a>
           <a href="#" class="text-sm font-medium text-gray-900">Reporting</a>
           <a [routerLink]="['settings']" class="text-sm font-medium text-gray-900">Paramètres</a>
         </nav>
@@ -40,9 +40,9 @@
           </span>
 
           <div class="relative inline-block text-left">
-            <button type="button" class="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2" id="menu-0-button" aria-expanded="false" aria-haspopup="true">
+            <button [routerLink]="['settings',{outlets: {settings: 'account'}}]" type="button" class="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2" id="menu-0-button" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Open user menu</span>
-              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              <img class="h-8 w-8 rounded-full" src="" alt="">
             </button>
 
             <!--
@@ -55,11 +55,11 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-            <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1">
+            <div appAccountBlock class="transform opacity-0 scale-95 absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1">
               <div class="py-1" role="none">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-0">Your Profile</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-1">Sign Out</a>
+                <a [routerLink]="['settings',{outlets: {settings: 'account'}}]" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-0">Mon profil</a>
+                <button (click)="disconnect()" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-1">Deconnexion</button>
               </div>
             </div>
           </div>
@@ -71,5 +71,5 @@
 
 
   </header>
-  
+
 </div>

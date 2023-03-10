@@ -2,29 +2,35 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, CanMatch, Route, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SecurityService } from './security.service';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanLoad, CanMatch {
-  callBackSS: boolean = false;
-  constructor(private SS: SecurityService){
-    this.SS.authListener().then((v:any)=>{
-      this.callBackSS = true;
-    })
-    .catch((err:any)=>{
-      this.callBackSS = false
-    })
-  }
+
+  auth = getAuth();
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.callBackSS === true){
-      return true;
-    } else {
-      return false;
-    }
+      return new Promise((resolve)=>{
 
+        onAuthStateChanged(this.auth, (user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            const uid = user.uid;
+            // ...
+            console.log('User connected OK >> Redirecting...')
+            resolve(true)
+          } else {
+            // User is signed out
+            // ...
+            console.log('User not connected NO >> Rejecting...')
+            resolve(false)
+          }
+        });
+      })
   }
   canMatch(
     route: Route,
@@ -33,6 +39,6 @@ export class AuthGuard implements CanActivate, CanLoad, CanMatch {
   }canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+      return true
   }
 }

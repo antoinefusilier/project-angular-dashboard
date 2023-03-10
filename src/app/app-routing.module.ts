@@ -25,6 +25,15 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
+  {
+    path: 'i',
+    loadChildren: () => import('./alerts/alerts.module').then(m => m.AlertsModule),
+    outlet: 'alerts',
+  },
+  {
+    path: '**',
+    redirectTo: 'auth'
+  }
 
 
 ];

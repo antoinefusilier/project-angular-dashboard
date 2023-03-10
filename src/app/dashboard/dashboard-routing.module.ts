@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserService } from '../services/user.service';
 import { DashboardComponent } from './dashboard.component';
 import { DivaltoSyncComponent } from './divalto-sync/divalto-sync.component';
 import { DomproSyncComponent } from './dompro-sync/dompro-sync.component';
@@ -52,7 +53,8 @@ const routes: Routes = [
           {
             path: 'account',
             component: AccountComponent,
-            outlet: 'settings'
+            outlet: 'settings',
+            data: { title: 'Mon compte' },
           },
           {
             path: 'prestashop',
@@ -69,4 +71,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {
+}

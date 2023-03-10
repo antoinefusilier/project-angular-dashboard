@@ -16,6 +16,9 @@ import { HeaderComponent } from './header/header.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PrestashopComponent } from './settings/prestashop/prestashop.component';
 import { AccountComponent } from './settings/account/account.component';
+import { AccountBlockDirective } from './header/account-block.directive';
+import { UserService } from '../services/user.service';
+import { Route, Router, RouterModule, UrlSegment } from '@angular/router';
 
 
 @NgModule({
@@ -33,12 +36,32 @@ import { AccountComponent } from './settings/account/account.component';
     HeaderComponent,
     SettingsComponent,
     PrestashopComponent,
-    AccountComponent
+    AccountComponent,
+    AccountBlockDirective
   ],
   imports: [
     CommonModule,
+    RouterModule,
+    // RouterModule.forChild([
+    //   {
+    //     matcher: (url) => {
+    //       if(url.length === 1 && url[0].path.match(/^@[\w]+$/gm)){
+    //         return {
+    //           consumed: url,
+    //           posParams: {
+    //             username: new UrlSegment(url[0].path.slice(1), {})
+    //           }
+    //         };
+    //       }
+    //       return null;
+    //     },
+    //     component: UsersComponent
+    //   }
+    // ]),
     DashboardRoutingModule,
     HttpClientModule
   ]
 })
-export class DashboardModule { }
+export class DashboardModule {
+
+}
