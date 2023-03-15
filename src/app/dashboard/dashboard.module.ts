@@ -19,6 +19,7 @@ import { AccountComponent } from './settings/account/account.component';
 import { AccountBlockDirective } from './header/account-block.directive';
 import { UserService } from '../services/user.service';
 import { Route, Router, RouterModule, UrlSegment } from '@angular/router';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { Route, Router, RouterModule, UrlSegment } from '@angular/router';
     SettingsComponent,
     PrestashopComponent,
     AccountComponent,
-    AccountBlockDirective
+    AccountBlockDirective,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,
