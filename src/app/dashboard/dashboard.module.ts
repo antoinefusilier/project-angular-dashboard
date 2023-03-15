@@ -5,13 +5,11 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DomproSyncComponent } from './dompro-sync/dompro-sync.component';
-import { ChildDirective, ResultComponent } from './dompro-sync/result/result.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DivaltoSyncComponent } from './divalto-sync/divalto-sync.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductsManagmentComponent } from './products-managment/products-managment.component';
 import { UsersComponent } from './users/users.component';
-import { TestComponent } from './dompro-sync/test/test.component';
 import { HeaderComponent } from './header/header.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PrestashopComponent } from './settings/prestashop/prestashop.component';
@@ -19,27 +17,32 @@ import { AccountComponent } from './settings/account/account.component';
 import { AccountBlockDirective } from './header/account-block.directive';
 import { UserService } from '../services/user.service';
 import { Route, Router, RouterModule, UrlSegment } from '@angular/router';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { ShopStatisticsComponent } from './welcome/shop-statistics/shop-statistics.component';
+import { LastSyncComponent } from './dompro-sync/last-sync/last-sync.component';
+import { HeavySyncComponent } from './dompro-sync/heavy-sync/heavy-sync.component';
+import { LightSyncComponent } from './dompro-sync/light-sync/light-sync.component';
+import { InformationsComponent } from './dompro-sync/informations/informations.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     DomproSyncComponent,
-    ResultComponent,
     SidebarComponent,
     DivaltoSyncComponent,
     WelcomeComponent,
     ProductsManagmentComponent,
     UsersComponent,
-    ChildDirective,
-    TestComponent,
     HeaderComponent,
     SettingsComponent,
     PrestashopComponent,
     AccountComponent,
     AccountBlockDirective,
-    BreadcrumbComponent
+    ShopStatisticsComponent,
+    LastSyncComponent,
+    HeavySyncComponent,
+    LightSyncComponent,
+    InformationsComponent
   ],
   imports: [
     CommonModule,

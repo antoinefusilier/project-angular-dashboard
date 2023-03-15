@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResultComponent } from './result.component';
+import { LastSyncComponent } from './last-sync.component';
 
-describe('ResultComponent', () => {
-  let component: ResultComponent;
-  let fixture: ComponentFixture<ResultComponent>;
+describe('LastSyncComponent', () => {
+  let component: LastSyncComponent;
+  let fixture: ComponentFixture<LastSyncComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResultComponent ]
+      declarations: [ LastSyncComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ResultComponent);
+    fixture = TestBed.createComponent(LastSyncComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

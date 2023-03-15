@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BreadcrumbComponent } from './breadcrumb.component';
+import { LightSyncComponent } from './light-sync.component';
 
-describe('BreadcrumbComponent', () => {
-  let component: BreadcrumbComponent;
-  let fixture: ComponentFixture<BreadcrumbComponent>;
+describe('LightSyncComponent', () => {
+  let component: LightSyncComponent;
+  let fixture: ComponentFixture<LightSyncComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BreadcrumbComponent ]
+      declarations: [ LightSyncComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BreadcrumbComponent);
+    fixture = TestBed.createComponent(LightSyncComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
