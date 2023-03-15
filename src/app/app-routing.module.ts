@@ -26,7 +26,7 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   {
-    path: 'i',
+    path: '',
     loadChildren: () => import('./alerts/alerts.module').then(m => m.AlertsModule),
     outlet: 'alerts',
   },

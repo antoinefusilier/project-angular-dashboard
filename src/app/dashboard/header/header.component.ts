@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { getAuth, signOut } from "firebase/auth";
+import { AlertsService } from 'src/app/services/alerts.service';
 import { UserService } from 'src/app/services/user.service';
 
 const auth = getAuth();
@@ -14,11 +15,16 @@ export class HeaderComponent implements OnInit {
 
   userPictureURL: string = '';
 
-  constructor(private router: Router, private Uservice: UserService){
-
+  constructor(
+    private router: Router,
+    private Uservice: UserService,
+    private aServ: AlertsService){
 
   }
-
+  newAlerte(){
+    // this.aServ.alertTest('test title', 'test description')
+    this.aServ.newAlert();
+  }
   ngOnInit(): void {
     // console.log(this.currentUser.photoURL);
     // this.userPictureURL = String(this.currentUser.photoURL)
