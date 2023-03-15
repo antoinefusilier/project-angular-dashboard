@@ -11,8 +11,34 @@ export class AlertsService {
   }
   newAlert = () => {
     let alertDivPrinc = document.getElementById('default-alert');
-    if (alertDivPrinc)
-    alertDivPrinc.style.display = 'none';
+    if (alertDivPrinc){
+          alertDivPrinc.classList.add('transform', 'ease-out', 'duration-300', 'transition');
+          alertDivPrinc.classList.add('translate-y-2', 'opacity-0', 'sm:translate-y-0', 'sm:translate-x-2');
+          setTimeout((alertDivPrinc2 = alertDivPrinc)=>{
+            if(alertDivPrinc2){
+              alertDivPrinc2.classList.add('translate-y-0', 'opacity-100', 'sm:translate-x-0');
+
+            }
+
+          },1000)
+          setTimeout((alertDivPrinc2 = alertDivPrinc)=>{
+            if(alertDivPrinc2){
+              alertDivPrinc2.classList.remove('opacity-100');
+              alertDivPrinc2.classList.add('opacity-0');
+
+            }
+
+          },2000)
+    }
+
+
+    // alertDivPrinc.style.display = 'none';
+    // Entering: "transform ease-out duration-300 transition"
+        // From: "translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+        // To: "translate-y-0 opacity-100 sm:translate-x-0"
+      // Leaving: "transition ease-in duration-100"
+        // From: "opacity-100"
+        // To: "opacity-0"
   }
 
   alertTestDOM = () => {
