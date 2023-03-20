@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
+
+import { Alert, AlertType, AlertOptions } from './alert.model';
 
 
 @Injectable({
@@ -6,8 +10,32 @@ import { Injectable } from '@angular/core';
 })
 export class AlertsService {
 
-  constructor() {
+  private defaultId = 'default-alert';
+  private subject = new Subject<Alert>();
 
+  onAlert = (id = this.defaultId): Observable<Alert> => {
+    return this.subject.asObservable().pipe(filter(x => x && x.id === id));
+  }
+  success(title: string, message: string, options?: any){
+    this.alert(new Alert({...options, type: AlertType.Success, title,message}))
+  }
+  error(title: string, message: string, options?: AlertOptions) {
+    this.alert(new Alert({ ...options, type: AlertType.Error, title, message }));
+  }
+
+  info(title: string, message: string, options?: AlertOptions) {
+      this.alert(new Alert({ ...options, type: AlertType.Info, title, message }));
+  }
+
+  warn(title:string, message: string, options?: AlertOptions) {
+      this.alert(new Alert({ ...options, type: AlertType.Warning, title, message }));
+  }
+  alert(alert:Alert){
+    alert.id = alert.id || this.defaultId;
+    this.subject.next(alert);
+  }
+  clear(id = this.defaultId) {
+    this.subject.next(new Alert({ id }));
   }
   newAlert = () => {
     let alertDivPrinc = document.getElementById('default-alert');
@@ -60,7 +88,11 @@ export class AlertsService {
     ) => {
     let div1 = document.createElement('div');
     div1.setAttribute('aria-live', 'assertive');
-    div1.classList.add('pointer-events-none', 'fixed inset-0', 'flex', 'items-end', 'px-4', 'py-6', 'sm:items-start', 'sm:p-6');
+    let div1CL = ['pointer-events-none', 'fixed inset-0', 'flex', 'items-end', 'px-4', 'py-6', 'sm:items-start', 'sm:p-6'];
+    div1CL.forEach((className:string)=>{
+
+      div1.classList.add(className);
+    })
 
     let div2 = document.createElement('div');
     div1.appendChild(div2);

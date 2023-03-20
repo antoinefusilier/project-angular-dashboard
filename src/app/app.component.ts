@@ -10,6 +10,11 @@ export class AppComponent {
 
   callBackDomproSync:any;
 
+  alertDataTest = {
+    title: "test title",
+    description: 'Test description...'
+  }
+
   constructor(private http: HttpClient){
     console.log(`Composant app initialized`);
   }
@@ -17,6 +22,14 @@ export class AppComponent {
     "Content-Type" : "application/json",
     "Accept" : "application/json"
   })
+
+  pushInputData = () => {
+    let callBack = {
+      title:"test title"
+    }
+    return callBack;
+  }
+
   testGetApi = async () => {
     this.http.post<any>('http://127.0.0.1:3007/api/test/angular',
       JSON.stringify({ "title": "Test de la requete vers le backend"}),

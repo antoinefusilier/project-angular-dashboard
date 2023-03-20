@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult } from 'firebase/auth';
-
+import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider } from 'firebase/auth';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +25,14 @@ export class UserService {
             // ...
             const userData = getAdditionalUserInfo(result)
 
-            if (userData?.isNewUser === true){
+            if (userData?.isNewUser === false
+              || user.email?.split('@')[1] === 'etsleblanc.fr'
+              || user.email === 'antoinefusilier@gmail.com'
+              || user.email === 'jmfusilier@gmail.com'
+              ){
+              this.saveUserInfo(user,userData);
+              resolve(true);
+            } else {
               user.delete()
                 .then(()=>{
                   console.log('Utilisateur inconnu, rejeté !')
@@ -37,10 +43,8 @@ export class UserService {
                   console.log('erreur de credential', err);
                   reject('Credential error, admin requested...')
                 })
-            } else {
               // this.router.navigate(['/dashboard'])
-              this.saveUserInfo(user,userData);
-              resolve(true);
+
             }
           } else {
             reject('Crediential error, admin requested ...')
@@ -59,6 +63,45 @@ export class UserService {
           // ...
         });
   });}
+
+  signInWithGithub = () => {
+    return new Promise((resolve, reject)=>{
+      const provider = new GithubAuthProvider();
+      provider.setCustomParameters({
+        'allow_signup': 'false'
+      });
+      const auth = getAuth();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+          const credential = GithubAuthProvider.credentialFromResult(result);
+          if(credential){
+            const token = credential.accessToken;
+            const user = result.user;
+            resolve(true);
+          } else {
+            reject(' >>> Credential issues');
+          }
+
+
+          // The signed-in user info.
+          // IdP data available using getAdditionalUserInfo(result)
+          // ...
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GithubAuthProvider.credentialFromError(error);
+          // ...
+          console.log(error);
+          reject(' >>> Connection catch issued')
+        });
+    })
+
+  }
   getUserInfo = () => {
     return new Promise((resolve,reject)=>{
     const provider = new GoogleAuthProvider()

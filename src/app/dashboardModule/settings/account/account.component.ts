@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { map } from 'rxjs';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/appServices/user.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',

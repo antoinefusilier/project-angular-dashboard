@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserService } from '../appServices/user.service';
 import { DashboardComponent } from './dashboard.component';
 import { DivaltoSyncComponent } from './divalto-sync/divalto-sync.component';
 import { DomproSyncComponent } from './dompro-sync/dompro-sync.component';

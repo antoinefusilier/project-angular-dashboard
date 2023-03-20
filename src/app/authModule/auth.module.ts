@@ -8,7 +8,7 @@ import { SigninComponent } from './signin/signin.component';
 import { environment as env} from 'src/environments/environment.development';
 import { initializeApp } from 'firebase/app';
 import { SignupComponent } from './signup/signup.component';
-import { UserService } from '../services/user.service';
+import { UserService } from '../appServices/user.service';
 
 
 @NgModule({

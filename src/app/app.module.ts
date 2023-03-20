@@ -7,10 +7,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { initializeApp } from 'firebase/app';
 import { environment as env } from 'src/environments/environment.development';
-import { UserService } from './services/user.service';
+import { UserService } from './appServices/user.service';
+import { AlertComponent } from './appComponents/alert/alert.component';
+import { IssueComponent } from './appComponents/issue/issue.component';
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
+    IssueComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,4 +30,6 @@ export class AppModule {
   constructor(){
     const app = initializeApp(env.firebaseConfig);
   }
+
+
 }

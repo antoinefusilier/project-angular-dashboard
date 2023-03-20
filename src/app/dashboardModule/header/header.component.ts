@@ -1,8 +1,8 @@
 import { Component, OnInit, Renderer2, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { getAuth, signOut } from "firebase/auth";
-import { AlertsService } from 'src/app/services/alerts.service';
-import { UserService } from 'src/app/services/user.service';
+import { AlertsService } from 'src/app/appServices/alerts.service';
+import { UserService } from 'src/app/appServices/user.service';
 
 const auth = getAuth();
 
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   }
   newAlerte(){
     // this.aServ.alertTest('test title', 'test description')
-    this.aServ.newAlert();
+    this.aServ.success('test title','Test success message');
   }
   ngOnInit(): void {
     // console.log(this.currentUser.photoURL);

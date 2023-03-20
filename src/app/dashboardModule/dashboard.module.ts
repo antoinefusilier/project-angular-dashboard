@@ -15,7 +15,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { PrestashopComponent } from './settings/prestashop/prestashop.component';
 import { AccountComponent } from './settings/account/account.component';
 import { AccountBlockDirective } from './header/account-block.directive';
-import { UserService } from '../services/user.service';
+import { UserService } from '../appServices/user.service';
 import { Route, Router, RouterModule, UrlSegment } from '@angular/router';
 import { ShopStatisticsComponent } from './welcome/shop-statistics/shop-statistics.component';
 import { LastSyncComponent } from './dompro-sync/last-sync/last-sync.component';
