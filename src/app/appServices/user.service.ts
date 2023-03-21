@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider } from 'firebase/auth';
@@ -7,7 +8,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, ge
 
 export class UserService {
   public test = 'test';
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   signInWithGoogle = () => {
     return new Promise((resolve, reject)=>{
@@ -17,7 +18,10 @@ export class UserService {
         .then((result) => {
           // This gives you a Google Access Token. You can use it to access the Google API.
           const credential = GoogleAuthProvider.credentialFromResult(result);
+          console.log('await credential');
           if (credential){
+            console.log('credential');
+
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
@@ -25,28 +29,49 @@ export class UserService {
             // ...
             const userData = getAdditionalUserInfo(result)
 
+            console.log(userData?.isNewUser)
+            console.log(user.email?.split('@')[1])
+            console.log(user.email)
+            console.log(user);
+            console.log(userData);
+
+            // Demande de vérification de l'utilisateur au backEnd
+            let header = new HttpHeaders({
+              "Content-Type" : "application/json",
+              "Accept" : "application/json"
+            })
+            let body = {
+              provider: 'google',
+              user: user,
+              additionInfos: userData
+            }
+
+            let req1 = this.http.post('http://localhost:3007/cr-auth/newUser', body, {headers: header})
+            req1.subscribe((value:any)=>{
+              console.log('Réponse du backEnd',value);
+            })
+
             if (userData?.isNewUser === false
-              || user.email?.split('@')[1] === 'etsleblanc.fr'
-              || user.email === 'antoinefusilier@gmail.com'
-              || user.email === 'jmfusilier@gmail.com'
+            //   || user.email?.split('@')[1] === 'etsleblanc.fr'
+            //   || user.email === 'antoinefusilier@gmail.com'
+            //   || user.email === 'jmfusilier@gmail.com'
               ){
               this.saveUserInfo(user,userData);
               resolve(true);
             } else {
-              user.delete()
-                .then(()=>{
-                  console.log('Utilisateur inconnu, rejeté !')
-                  // this.router.navigate(['/signup'])
-                  reject('Unknow user, admin requested...')
-                })
-                .catch((err:any)=>{
-                  console.log('erreur de credential', err);
-                  reject('Credential error, admin requested...')
-                })
-              // this.router.navigate(['/dashboard'])
+            //   user.delete()
+            //     .then(()=>{
+            // //       console.log('Utilisateur inconnu, rejeté !')
+            //       reject('Unknow user, admin requested...')
+            //     })
+            //     .catch((err:any)=>{
+            //       console.log('erreur de credential', err);
+            //       reject('Credential error, admin requested...')
+            //     })
 
             }
           } else {
+            console.log('credential');
             reject('Crediential error, admin requested ...')
             console.log('Erreur lors de la récupération du credential google auth');
           }
@@ -54,6 +79,12 @@ export class UserService {
 
         }).catch((error) => {
           // Handle Errors here.
+          console.log('Connection issued >>>',error.code);
+
+          if (error.code == 'auth/user-disabled' || error.message.indexOf('auth/user-disabled')){
+            console.log('Compte utilisateur suspendu');
+            resolve('disabled');
+          }
           const errorCode = error.code;
           const errorMessage = error.message;
           // The email of the user's account used.

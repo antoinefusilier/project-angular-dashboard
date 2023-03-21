@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+  viewInit = false;
   title = 'angular_app';
 
   callBackDomproSync:any;
@@ -18,6 +19,11 @@ export class AppComponent {
   constructor(private http: HttpClient){
     console.log(`Composant app initialized`);
   }
+
+  ngAfterViewInit(): void {
+      this.viewInit = true
+  }
+
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
     "Accept" : "application/json"

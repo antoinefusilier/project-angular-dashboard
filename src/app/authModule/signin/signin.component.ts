@@ -16,8 +16,10 @@ export class SigninComponent {
     googleAuth = () => {
         this.Uservice.signInWithGoogle().then((value:any)=>{
           if (value === true){
-            this._alertService.success('title', 'description')
+            this._alertService.success('Connecté !', 'De retour parmis nous ;-)')
             this.router.navigate(['/dashboard'])
+          } else if (value === 'disabled'){
+            this._alertService.warn('Compte suspendu', 'Votre compte utilisateur est actuellement suspendu. Demandez un support administrateur pour plus d\'information ou demander l\'activation de votre compte')
           } else {
             this.router.navigate(['/signup'])
           }

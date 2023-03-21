@@ -1,6 +1,6 @@
 import { Component,Input, OnChanges, OnDestroy, SimpleChanges, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Alert } from 'src/app/appServices/alert.model';
+import { Alert, AlertType } from 'src/app/appServices/alert.model';
 import { AlertsService } from 'src/app/appServices/alerts.service';
 
 @Component({
@@ -15,7 +15,12 @@ export class AlertComponent implements OnInit, OnDestroy{
 
   alerts: Alert[] = [];
   alertSubscription!: Subscription;
-
+  alertTypes = {
+    warning :AlertType.Warning,
+    success: AlertType.Success,
+    info: AlertType.Info,
+    error: AlertType.Error
+  }
   constructor(private _alertService: AlertsService){}
   // ngOnChanges(changes: SimpleChanges){
     // changes.alertInputData
@@ -27,7 +32,9 @@ export class AlertComponent implements OnInit, OnDestroy{
           if(!alert.message){
             console.log('pas d\'alert');
           }
+          if (alert.id && alert.type == AlertType.Warning){
 
+          }
           this.alerts.push(alert);
 
           console.log(alert.id);
