@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider } from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider, UserInfo, AuthCredential, UserCredential, AuthProvider, OAuthCredential } from 'firebase/auth';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +17,7 @@ export class UserService {
       signInWithPopup(auth, provider)
         .then((result) => {
           // This gives you a Google Access Token. You can use it to access the Google API.
-          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const credential: Credential | OAuthCredential | null = GoogleAuthProvider.credentialFromResult(result);
           console.log('await credential');
           if (credential){
             console.log('credential');
@@ -35,39 +35,33 @@ export class UserService {
             console.log(user);
             console.log(userData);
 
-            // Demande de vérification de l'utilisateur au backEnd
-            let header = new HttpHeaders({
-              "Content-Type" : "application/json",
-              "Accept" : "application/json"
-            })
-            let body = {
-              provider: 'google',
-              user: user,
-              additionInfos: userData
-            }
 
-            let req1 = this.http.post('http://localhost:3007/cr-auth/newUser', body, {headers: header})
-            req1.subscribe((value:any)=>{
-              console.log('Réponse du backEnd',value);
-            })
 
-            if (userData?.isNewUser === false
-            //   || user.email?.split('@')[1] === 'etsleblanc.fr'
-            //   || user.email === 'antoinefusilier@gmail.com'
-            //   || user.email === 'jmfusilier@gmail.com'
-              ){
-              this.saveUserInfo(user,userData);
-              resolve(true);
+            if (userData?.isNewUser === false){
+              this.callVerifySession(user, credential).then((value:any)=>{
+
+                console.log('Session weldone verify', value);
+                this.saveUserInfo(user,userData);
+                resolve(true);
+              }).catch((err:any)=>{
+                reject('Failled session verification')
+              })
             } else {
-            //   user.delete()
-            //     .then(()=>{
-            // //       console.log('Utilisateur inconnu, rejeté !')
-            //       reject('Unknow user, admin requested...')
-            //     })
-            //     .catch((err:any)=>{
-            //       console.log('erreur de credential', err);
-            //       reject('Credential error, admin requested...')
-            //     })
+              // Demande de vérification de l'utilisateur au backEnd
+              let header = new HttpHeaders({
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
+              })
+              let body = {
+                provider: 'google',
+                user: user,
+                additionInfos: userData
+              }
+
+              let req1 = this.http.post('http://localhost:3007/cr-auth/newUser', body, {headers: header})
+              req1.subscribe((value:any)=>{
+                console.log('Réponse du backEnd',value);
+              })
 
             }
           } else {
@@ -109,6 +103,7 @@ export class UserService {
           if(credential){
             const token = credential.accessToken;
             const user = result.user;
+            console.log('USER >>> ',user);
             resolve(true);
           } else {
             reject(' >>> Credential issues');
@@ -133,6 +128,33 @@ export class UserService {
     })
 
   }
+
+  callVerifySession = async(user: any, credential?:Credential | OAuthCredential) => {
+    return new Promise(async(resolve,reject)=>{
+      let header = new HttpHeaders({
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      })
+      let body = {
+        user: user
+      }
+      let req1 = this.http.post('http://localhost:3007/cr-auth/verifySession', body, {headers: header})
+      req1.subscribe((value:any)=>{
+        console.log('Réponse du backEnd',value);
+        if(value.status === 'valid'){
+          resolve(true);
+        } else {
+          reject (false);
+        }
+      })
+      })
+
+  }
+
+  callKillSession = async() => {
+
+  }
+
   getUserInfo = () => {
     return new Promise((resolve,reject)=>{
     const provider = new GoogleAuthProvider()

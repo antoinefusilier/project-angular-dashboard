@@ -3,11 +3,16 @@ import { ActivatedRouteSnapshot, CanActivate, CanLoad, CanMatch, Route, RouterSt
 import { Observable } from 'rxjs';
 import { SecurityService } from './security.service';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { UserService } from './appServices/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanLoad, CanMatch {
+
+  constructor(private UServ: UserService){
+
+  }
 
   auth = getAuth();
   canActivate(
@@ -15,14 +20,19 @@ export class AuthGuard implements CanActivate, CanLoad, CanMatch {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return new Promise((resolve)=>{
 
-        onAuthStateChanged(this.auth, (user) => {
+        onAuthStateChanged(this.auth, async(user) => {
           if (user) {
             // User is signed in, see docs for a list of available properties
             // https://firebase.google.com/docs/reference/js/firebase.User
             const uid = user.uid;
             // ...
-            console.log('User connected OK >> Redirecting...')
-            resolve(true)
+            await this.UServ.callVerifySession(user).then((value: any)=>{
+              console.log('CallBack User call verification', value);
+              resolve(true)
+              console.log('User connected OK >> Redirecting...')
+            }).catch((err:any)=>{
+              resolve(false);
+            })
           } else {
             // User is signed out
             // ...
