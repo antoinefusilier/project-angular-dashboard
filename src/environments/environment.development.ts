@@ -11,6 +11,11 @@ export const environment = {
   firebaseAuth: {
     WebSdkClientId: "676467061736-dl74ruosqmqftav16brl0mkh6mrg4jf2.apps.googleusercontent.com",
     WebClientSecret: "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"
+  },
+  app: {
+    deployment_key: "!uKPPPzYnvsq^zn6*Uh4K^#BN$36VJeuKxm1&%fwHTTYRYWcFRxL3DZP@NnZ",
+    valid_return_key: "cwf5sy$@$JbH$1PMm@#LrM95TXTF&ut$nHxndLcQuT5ZD9vxMzwNS&1Y5fD^",
+    invalid_return_key: "5QMnr!j*eL^3Xze9Cd2F8aH95NvH2gaG8SMEL7a&wyQPTr2n4fMmNgD%%&^&"
   }
 
 };

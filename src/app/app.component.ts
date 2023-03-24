@@ -54,7 +54,6 @@ export class AppComponent implements AfterViewInit {
         this.callBackDomproSync = data;
       })
   }
-
   // Méthode de test de lancement de la synchronisation des données depuis le serveur node
   testDomproSftpSync:any = async () => {
     this.http.post<any>('http://127.0.0.1:3007/dompro_sftp_sync/sync/start',{ title: 'Test de la requete vers le backend'})
