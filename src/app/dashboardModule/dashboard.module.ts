@@ -23,8 +23,8 @@ import { HeavySyncComponent } from './dompro-sync/heavy-sync/heavy-sync.componen
 import { LightSyncComponent } from './dompro-sync/light-sync/light-sync.component';
 import { InformationsComponent } from './dompro-sync/informations/informations.component';
 
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { UserMemoryService } from '../appServices/user-memory.service';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { UserMemoryService } from '../appServices/user-memory.service';
 
 @NgModule({
   declarations: [
@@ -66,8 +66,8 @@ import { UserMemoryService } from '../appServices/user-memory.service';
     //   }
     // ]),
     DashboardRoutingModule,
-    HttpClientModule,
-    InMemoryWebApiModule.forRoot(UserMemoryService)
+    HttpClientModule
+    // InMemoryWebApiModule.forRoot(UserMemoryService)
 
   ]
 })

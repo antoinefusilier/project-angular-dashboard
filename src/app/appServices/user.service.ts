@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider, UserInfo, AuthCredential, UserCredential, AuthProvider, OAuthCredential } from 'firebase/auth';
 import { environment as ENV} from 'src/environments/environment.development';
+import { User } from '../appInterfaces/user';
 import { UserMemoryService } from './user-memory.service';
 @Injectable({
   providedIn: 'root'
@@ -162,7 +163,8 @@ export class UserService {
         console.log('Réponse du backEnd',callBack);
         console.log('Callback validity', callBack.validity);
         if(callBack.validity === ENV.app.valid_return_key){
-          this.userMemory.saveUserInfo({
+
+          this.saveUserInfo({
             _id: callBack.user._id,
             first_name: callBack.user.first_name,
             last_name: callBack.user.last_name,
@@ -195,36 +197,39 @@ export class UserService {
         throw new Error(err);
       })
   }
+
   callKillSession = async() => {
 
   }
 
-  getUserInfo = () => {
+  getCurrentUser = () => {
     return new Promise((resolve,reject)=>{
-    const provider = new GoogleAuthProvider()
-    const auth = getAuth();
 
-    if(auth.currentUser){
-      resolve(auth.currentUser);
-    } else {
-      reject('Impossible to get current user data');
-    }
+      const localUser: UserInfo | any = localStorage.getItem('currentUser')
+
+      console.log('getCurrentUser', localUser);
+      console.log('getCurrentUser PARSED', JSON.parse(localUser));
+
+
+      if (localUser.provider === 'google.com'){
+        const provider = new GoogleAuthProvider()
+        const auth = getAuth();
+        if(auth.currentUser){
+          console.log(auth.currentUser)
+          resolve(localUser);
+        } else {
+          reject('Impossible to get current user data');
+        }
+      } else {
+        resolve(localUser);
+
+      }
+
+
   })}
 
-  saveUserInfo = async(userInfo:any, userAdditionalInfo: any) => {
-    // console.log("USER INFOS >>> ",userInfo, "USERS ADD INFOS >>> ",userAdditionalInfo);
-    // console.log("uid >>",userInfo.uid)
-    // console.log("accessToken",userInfo.accessToken)
-    // console.log("display Name",userInfo.displayName)
-    // console.log("email >>",userInfo.email)
-    // console.log("email verified >>",userInfo.emailVerified)
-    // console.log("photoURL >>",userInfo.photoURL)
-    // console.log("createdAt >>",userInfo.metadata.UserMetadata.createdAt)
-    // console.log("lastLoginAt >>",userInfo.metadata.UserMetadata.lastLoginAt)
-    // console.log("lastSignInTime >>",userInfo.metadata.UserMetadata.lastSignInTime)
-    // console.log("creationTime >>",userInfo.metadata.UserMetadata.creationTime)
-
-    // console.log("localId >>",userInfo.localId)
+  saveUserInfo = async(userInfo:User | any, userAdditionalInfo?: null | any) => {
+    localStorage.setItem('currentUser', JSON.stringify(userInfo))
 
 
   }
