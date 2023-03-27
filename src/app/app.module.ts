@@ -11,6 +11,10 @@ import { UserService } from './appServices/user.service';
 import { AlertComponent } from './appComponents/alert/alert.component';
 import { IssueComponent } from './appComponents/issue/issue.component';
 import { ApiCheckInterceptor } from './appInterceptor/api-check.interceptor';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { UserMemoryService } from './appServices/user-memory.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,8 @@ import { ApiCheckInterceptor } from './appInterceptor/api-check.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    // InMemoryWebApiModule.forRoot(UserMemoryService)
   ],
   providers: [
     UserService,

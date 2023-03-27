@@ -31,6 +31,8 @@ export class AuthGuard implements CanActivate, CanLoad, CanMatch {
               resolve(true)
               console.log('User connected OK >> Redirecting...')
             }).catch((err:any)=>{
+              console.log('Issued request')
+
               resolve(false);
             })
           } else {

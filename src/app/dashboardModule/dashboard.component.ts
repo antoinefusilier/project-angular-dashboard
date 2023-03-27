@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from '../appServices/user.service';
 import { Router } from '@angular/router';
+import { UserMemoryService } from '../appServices/user-memory.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,11 +22,31 @@ export class DashboardComponent {
   constructor(
     private http: HttpClient,
     private Uservice: UserService,
-    private router_: Router){
+    private router_: Router,
+    private UM : UserMemoryService
+    ){
     console.log(`Composant app initialized`);
 
+      // this.UM.saveUserInfo({
+      //   _id: 'test',
+      //   first_name: 'test',
+      //   last_name: 'test',
+      //   email: 'jspa@google.com',
+      //   provider: 'google.com',
+      //   secret:{
+      //     token_id: '2123saaq34sa',
+      //     public_key: 'qweasx2q341sda'
+      //   }
+      // })
+    this.UM.createDb();
+      this.http.post('/heros', {clear: false}).subscribe((value:any)=>{
+        console.log(value)
+      })
 
   }
+
+
+
   testParseRouteData = () => {
     this.router_.navigate(['dashboard','settings',{outlets: {settings: ['account']}, state: {
       currentUserInfo: 'le test current user info'

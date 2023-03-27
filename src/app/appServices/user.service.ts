@@ -1,14 +1,16 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider, UserInfo, AuthCredential, UserCredential, AuthProvider, OAuthCredential } from 'firebase/auth';
+import { environment as ENV} from 'src/environments/environment.development';
+import { UserMemoryService } from './user-memory.service';
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
   public test = 'test';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userMemory: UserMemoryService) { }
 
   signInWithGoogle = () => {
     return new Promise((resolve, reject)=>{
@@ -29,22 +31,39 @@ export class UserService {
             // ...
             const userData = getAdditionalUserInfo(result)
 
-            console.log(userData?.isNewUser)
-            console.log(user.email?.split('@')[1])
-            console.log(user.email)
-            console.log(user);
-            console.log(userData);
-
-
-
             if (userData?.isNewUser === false){
-              this.callVerifySession(user, credential).then((value:any)=>{
+              this.callVerifySession(user).then((callBack:any)=>{
 
-                console.log('Session weldone verify', value);
-                this.saveUserInfo(user,userData);
+                console.log('callBack.validity',callBack.validity)
+
+                console.log('typeof callBack.validity', typeof(callBack.validity));
+
+                if (callBack.validity === ENV.app.valid_return_key
+                  && typeof(callBack.validity) === 'string'
+                  && callBack.validity.length > 10
+                  ){
+                  console.log('Session weldone verify', callBack);
+                  // this.saveUserInfo(user,userData);
+
+                  this.userMemory.saveUserInfo({
+                    _id: callBack.user._id,
+                    first_name: callBack.user.first_name,
+                    last_name: callBack.user.last_name,
+                    email: callBack.user.email || null,
+                    secret: {
+                      token_id: callBack.user.token,
+                      public_key: callBack.user.public_key
+                    },
+                    provider: "google.com",
+                  })
+                } else {
+                  throw new Error('Invalid returned key');
+                }
+
                 resolve(true);
               }).catch((err:any)=>{
-                reject('Failled session verification')
+                console.log('Verification issued',err);
+                reject('Failled session verification');
               })
             } else {
               // Demande de vérification de l'utilisateur au backEnd
@@ -138,19 +157,44 @@ export class UserService {
       let body = {
         user: user
       }
-      let req1 = this.http.post('http://localhost:3007/cr-auth/verifySession', body, {headers: header})
-      req1.subscribe((value:any)=>{
-        console.log('Réponse du backEnd',value);
-        if(value.status === 'valid'){
+      this.http.post('http://localhost:3007/cr-auth/verifySession', body, {headers: header})
+      .subscribe((callBack:any)=>{
+        console.log('Réponse du backEnd',callBack);
+        console.log('Callback validity', callBack.validity);
+        if(callBack.validity === ENV.app.valid_return_key){
+          this.userMemory.saveUserInfo({
+            _id: callBack.user._id,
+            first_name: callBack.user.first_name,
+            last_name: callBack.user.last_name,
+            email: callBack.user.email || null,
+            secret: {
+              token_id: callBack.user.secrets.token,
+              public_key: callBack.user.secrets.public_key
+            },
+            provider: "google.com",
+          }).then((value:any)=>{
+            console.log('Local User saved', value);
+          }).catch((err:any)=>{
+            console.log('Error',err);
+          })
+
           resolve(true);
         } else {
           reject (false);
         }
       })
+      }).then((value: any)=>{
+        console.log('Requete de vérification de session envoyée/reçue avec succès',value);
+
+      }).catch((err:any)=>{
+        console.error('Verification request to remote failed', err);
+        // if(err.message)
+        // {
+        //   console.log('ERROR MESSAGE', err);
+        // }
+        throw new Error(err);
       })
-
   }
-
   callKillSession = async() => {
 
   }
