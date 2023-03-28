@@ -31,19 +31,7 @@ export class DivaltoSyncComponent {
     },
     withCredential: false
   }
-  testSyncLogs:any = async () => {
-    console.log('variable activation :', this.active_presta_upd_price_qty);
-    this.http.post<any>('http://127.0.0.1:3007/divalto-sync/sync-logs',{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
-    {
-      headers: this.headers,
-      params: this.params,
-      withCredentials: false
-    })
-      .subscribe(data => {
-        console.log('Données souscrites : ',data);
-        this.callBackDomproSync = data;
-      })
-  }
+ 
   // Méthode de requete API vers Node server pour tester la connection à la base sql server de Divalo
   testSqlServDivaltoConnect:any = async () => {
     console.log('variable activation :', this.active_presta_upd_price_qty);

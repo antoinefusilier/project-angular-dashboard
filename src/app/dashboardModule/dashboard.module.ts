@@ -22,6 +22,9 @@ import { LastSyncComponent } from './dompro-sync/last-sync/last-sync.component';
 import { HeavySyncComponent } from './dompro-sync/heavy-sync/heavy-sync.component';
 import { LightSyncComponent } from './dompro-sync/light-sync/light-sync.component';
 import { InformationsComponent } from './dompro-sync/informations/informations.component';
+import { SyncLogsComponent } from './divalto-sync/sync-logs/sync-logs.component';
+import { ModuleProposalComponent } from './divalto-sync/module-proposal/module-proposal.component';
+import { ListComponent } from './products-managment/list/list.component';
 
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { UserMemoryService } from '../appServices/user-memory.service';
@@ -44,7 +47,10 @@ import { InformationsComponent } from './dompro-sync/informations/informations.c
     LastSyncComponent,
     HeavySyncComponent,
     LightSyncComponent,
-    InformationsComponent
+    InformationsComponent,
+    SyncLogsComponent,
+    ModuleProposalComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,

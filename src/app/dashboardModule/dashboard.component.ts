@@ -38,20 +38,16 @@ export class DashboardComponent {
       //     public_key: 'qweasx2q341sda'
       //   }
       // })
-    this.UM.createDb();
-      this.http.post('/heros', {clear: false}).subscribe((value:any)=>{
-        console.log(value)
-      })
 
   }
 
 
 
-  testParseRouteData = () => {
-    this.router_.navigate(['dashboard','settings',{outlets: {settings: ['account']}, state: {
-      currentUserInfo: 'le test current user info'
-    }}])
-  }
+  // testParseRouteData = () => {
+  //   this.router_.navigate(['dashboard','settings',{outlets: {settings: ['account']}, state: {
+  //     currentUserInfo: 'le test current user info'
+  //   }}])
+  // }
 
   testGetApi = () => {
     this.http.get<undefined>('http://127.0.0.1:3007/dompro_sftp_sync/api/test/angular',

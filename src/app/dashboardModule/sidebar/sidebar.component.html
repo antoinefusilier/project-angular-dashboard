@@ -174,18 +174,34 @@
         </a>
       </nav>
     </div>
-    <div class="flex flex-shrink-0 bg-gray-700 p-4">
-      <a href="#" class="group block w-full flex-shrink-0">
-        <div class="flex items-center">
-          <div>
+    <div class="flex flex-shrink-0 bg-gray-700 p-4 bg-gradient-to-r
+    from-gray-500
+    via-dark-500
+    to-red-500
+    background-animate">
+      <a href="#" class="group inline-block w-full flex-shrink-0">
+        <div ng-model="currUser" class="flex justify-between items-center w-full">
+          <div class="min-w-fit">
             <img class="inline-block h-9 w-9 rounded-full bg-white" src="assets/logo_leblanc.png" alt="">
           </div>
-          <div class="ml-3">
-            <p class="text-sm font-medium text-white">Administrateur</p>
-            <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">Mon compte</p>
+          <div ng-model="currUser" class=" w-full ml-3">
+            <p ng-model="currUser" class="text-sm font-medium text-white">{{currUser.first_name || '...'}}  {{ currUser.last_name || '...'}}</p>
+            <p class="inline-block text-xs font-medium text-gray-300 whitespace-pre-line group-hover:text-gray-200 max-w-min w-20">{{currUser.email.slice(0,20) || 'Pas d\'email'}}{{'...'}}</p>
           </div>
+          <a [routerLink]="['settings',{outlets: {settings: 'account'}}]" class="ml-7 inline max-w-min">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white hover:bg-orange-400/20 rounded-full">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
+            </svg>
+          </a>
         </div>
+        <div class="block w-100">
+
+          <button type="button" class="block rounded-md bg-green-300/10 w-100 min-w-full py-2 px-3 mt-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-400/20">Profil</button>
+        </div>
+        <button type="button" (click)="disconnect()" class="block  rounded-md bg-red-300/10 w-100 min-w-full py-2 px-3 mt-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-400/20">Déconnexion</button>
+        
       </a>
+     
     </div>
   </div>
 </div>
