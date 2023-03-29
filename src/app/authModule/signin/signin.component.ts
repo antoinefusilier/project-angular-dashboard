@@ -19,12 +19,14 @@ export class SigninComponent {
             this._alertService.success('Connecté !', 'De retour parmis nous ;-)')
             this.router.navigate(['/dashboard'])
           } else if (value === 'disabled'){
-            this._alertService.warn('Compte suspendu', 'Votre compte utilisateur est actuellement suspendu. Demandez un support administrateur pour plus d\'information ou demander l\'activation de votre compte')
+            this._alertService.warn('Compte suspendu', 'Votre compte utilisateur est actuellement suspendu. Demandez un support administrateur pour plus d\'information ou demander l\'activation de votre compte.')
           } else {
-            this.router.navigate(['/signup'])
+            this._alertService.warn('Erreur d\'authentification', 'Erreur d\'authentification autre, non spécifié pour des raison de sécuritée. Veuillez vérifier vos information de connexion ou faire appel à un administrateur. Désolé')
+            this.router.navigate(['/auth/signup'])
           }
         }).catch((err:any)=>{
-          this.router.navigate(['/signup']);
+          this._alertService.warn('Erreur d\'authentification', 'Erreur d\'authentification autre, non spécifié pour des raison de sécuritée. Veuillez vérifier vos information de connexion ou faire appel à un administrateur. Désolé')
+          this.router.navigate(['/auth/signup']);
         })
     }
     githubAuth = () => {
@@ -32,10 +34,10 @@ export class SigninComponent {
         if (value === true){
           this.router.navigate(['/admin']);
         } else {
-          this.router.navigate(['/signup']);
+          this.router.navigate(['/auth/signup']);
         }
       }).catch((err:any)=>{
-        this.router.navigate(['/signup']);
+        this.router.navigate(['/auth/signup']);
       })
     }
     saveUserInfo = async() => {

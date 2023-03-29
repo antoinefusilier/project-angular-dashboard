@@ -32,42 +32,28 @@ export class UserService {
             // ...
             const userData = getAdditionalUserInfo(result)
 
+            // If not new firebase user of project...
             if (userData?.isNewUser === false){
-              this.callVerifySession(user).then((callBack:any)=>{
+              this.callVerifySession(user)
+                .then((callBack:any)=>{
 
-                console.log('callBack.validity',callBack.validity)
-
-                console.log('typeof callBack.validity', typeof(callBack.validity));
-
-                if (callBack.validity === ENV.app.valid_return_key
-                  && typeof(callBack.validity) === 'string'
-                  && callBack.validity.length > 10
-                  ){
-                  console.log('Session weldone verify', callBack);
-                  // this.saveUserInfo(user,userData);
-
-                  this.userMemory.saveUserInfo({
-                    _id: callBack.user._id,
-                    first_name: callBack.user.first_name,
-                    last_name: callBack.user.last_name,
-                    email: callBack.user.email || null,
-                    secret: {
-                      token_id: callBack.user.token,
-                      public_key: callBack.user.public_key
-                    },
-                    provider: "google.com",
-                  })
+                // Verification callback then value
+                if (typeof(callBack) === 'boolean'
+                  && callBack === true){
+                    resolve(true)
                 } else {
-                  throw new Error('Invalid returned key');
+                  // Else return callback value for read validity issue
+                  reject(callBack)
                 }
 
-                resolve(true);
-              }).catch((err:any)=>{
-                console.log('Verification issued',err);
-                reject('Failled session verification');
-              })
+                })
+                // Issued :: Verification method with backend failed
+                .catch((err:any)=>{
+                  // console.error(err);
+                  reject('Failled session verification');
+                })
             } else {
-              // Demande de vérification de l'utilisateur au backEnd
+              // [FR] Demande de vérification et enregistrement de l'utilisateur au backEnd
               let header = new HttpHeaders({
                 "Content-Type" : "application/json",
                 "Accept" : "application/json"
@@ -95,19 +81,17 @@ export class UserService {
           // Handle Errors here.
           console.log('Connection issued >>>',error.code);
 
+          // [EN] If error code signify a disabled account on firebase projet
           if (error.code == 'auth/user-disabled' || error.message.indexOf('auth/user-disabled')){
-            console.log('Compte utilisateur suspendu');
             resolve('disabled');
+          } else {
+            reject('google_authentification_failed');
           }
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // The email of the user's account used.
-          const email = error.customData.email;
-          // The AuthCredential type that was used.
-          const credential = GoogleAuthProvider.credentialFromError(error);
-          // ...
         });
-  });}
+        // END signInWithPopup
+      });
+    // END signInWithGoogle
+  }
 
   signInWithGithub = () => {
     return new Promise((resolve, reject)=>{
@@ -150,7 +134,7 @@ export class UserService {
   }
 
   callVerifySession = async(user: any, credential?:Credential | OAuthCredential) => {
-    return new Promise(async(resolve,reject)=>{
+    return new Promise((resolve,reject)=>{
       let header = new HttpHeaders({
         "Content-Type" : "application/json",
         "Accept" : "application/json"
@@ -159,43 +143,41 @@ export class UserService {
         user: user
       }
       this.http.post('http://localhost:3007/cr-auth/verifySession', body, {headers: header})
-      .subscribe((callBack:any)=>{
-        console.log('Réponse du backEnd',callBack);
-        console.log('Callback validity', callBack.validity);
-        if(callBack.validity === ENV.app.valid_return_key){
+        .subscribe(async(callBack:any)=>{
+          console.log('Réponse du backEnd',callBack);
+          console.log('Callback validity', callBack.validity);
+          if(callBack.validity === ENV.app.valid_return_key
+            && typeof(callBack.validity) === 'string'
+            && callBack.validity.length > 10
+            ){
 
-          this.saveUserInfo({
-            _id: callBack.user._id,
-            first_name: callBack.user.first_name,
-            last_name: callBack.user.last_name,
-            email: callBack.user.email || null,
-            secret: {
-              token_id: callBack.user.secrets.token,
-              public_key: callBack.user.secrets.public_key
-            },
-            provider: "google.com",
-          }).then((value:any)=>{
-            console.log('Local User saved', value);
-          }).catch((err:any)=>{
-            console.log('Error',err);
-          })
-
-          resolve(true);
-        } else {
-          reject (false);
-        }
-      })
-      }).then((value: any)=>{
-        console.log('Requete de vérification de session envoyée/reçue avec succès',value);
-
-      }).catch((err:any)=>{
-        console.error('Verification request to remote failed', err);
-        // if(err.message)
-        // {
-        //   console.log('ERROR MESSAGE', err);
-        // }
-        throw new Error(err);
-      })
+            // Call brother method for saved in local storage public user info
+            await this.saveUserInfo({
+              _id: callBack.user._id,
+              first_name: callBack.user.first_name,
+              last_name: callBack.user.last_name,
+              email: callBack.user.email || null,
+              secret: {
+                token_id: callBack.user.secrets.token,
+                public_key: callBack.user.secrets.public_key
+              },
+              provider: "google.com",
+              })
+              // Success save user info on local storage
+              .then(()=>{
+                resolve(true)
+                console.log('Local User saved');
+              })
+              // Failed to saved user info on local
+              .catch((err:any)=>{
+                reject('Saving local user failed')
+                console.log('Error',err);
+              })
+          } else {
+            reject ('CallBack validy compromise');
+          }
+        })
+    })
   }
 
   callKillSession = async() => {

@@ -25,6 +25,7 @@ import { InformationsComponent } from './dompro-sync/informations/informations.c
 import { SyncLogsComponent } from './divalto-sync/sync-logs/sync-logs.component';
 import { ModuleProposalComponent } from './divalto-sync/module-proposal/module-proposal.component';
 import { ListComponent } from './products-managment/list/list.component';
+import { SearchComponent } from './search/search.component';
 
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { UserMemoryService } from '../appServices/user-memory.service';
@@ -50,7 +51,8 @@ import { ListComponent } from './products-managment/list/list.component';
     InformationsComponent,
     SyncLogsComponent,
     ModuleProposalComponent,
-    ListComponent
+    ListComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
@@ -75,6 +77,8 @@ import { ListComponent } from './products-managment/list/list.component';
     HttpClientModule
     // InMemoryWebApiModule.forRoot(UserMemoryService)
 
+  ],
+  providers: [
   ]
 })
 export class DashboardModule {

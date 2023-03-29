@@ -14,12 +14,14 @@ import { ApiCheckInterceptor } from './appInterceptor/api-check.interceptor';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { UserMemoryService } from './appServices/user-memory.service';
+import { LoaderComponent } from './appComponents/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlertComponent,
     IssueComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
