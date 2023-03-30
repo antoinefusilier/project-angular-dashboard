@@ -1,13 +1,24 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import {
+  Router,
+  Event as RouterEvent,
+  NavigationStart,
+  NavigationEnd,
+  NavigationCancel,
+  NavigationError,
+  ActivatedRoute
+} from '@angular/router'
+import { AlertsService } from './appServices/alerts.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
+  public showOverlay: any | boolean = true;
   viewInit = false;
   title = 'angular_app';
+  @Input('ngModel') message:any;
 
   callBackDomproSync:any;
 
@@ -16,10 +27,46 @@ export class AppComponent implements AfterViewInit {
     description: 'Test description...'
   }
 
-  constructor(private http: HttpClient){
+  constructor(
+    private http: HttpClient,
+    private router:Router,
+    private route: ActivatedRoute,
+    private alertService: AlertsService){
     console.log(`Composant app initialized`);
+    router.events.subscribe((event: RouterEvent)=>{
+      this.navigationInterceptor(event);
+    })
   }
 
+  ngOnInit() {
+      const error = this.route.snapshot.queryParamMap.get('error')
+      console.log('Error handler',error)
+      if (error && error === 'ERR_CONNECTION_REFUSED'){
+
+        this.alertService.error('Serveur déconnecté', 'Le serveur distant de l\'application (backend), ne répond plus... Si le problème persiste veuillez-vous rapporcher d\'un administrateur.')
+        this.message = {
+          title: 'En attente de réponse du serveur',
+          description: 'Nous sommes désolé pour la gène occasionnée'
+        }
+      }
+    }
+
+ navigationInterceptor(event: RouterEvent): void {
+    if (event instanceof NavigationStart) {
+      this.showOverlay = true;
+    }
+    if (event instanceof NavigationEnd) {
+      this.showOverlay = false;
+    }
+
+    // Set loading state to false in both of the below events to hide the spinner in case a request fails
+    if (event instanceof NavigationCancel) {
+      this.showOverlay = true;
+    }
+    if (event instanceof NavigationError) {
+      this.showOverlay = true;
+    }
+  }
   ngAfterViewInit(): void {
       this.viewInit = true
   }
