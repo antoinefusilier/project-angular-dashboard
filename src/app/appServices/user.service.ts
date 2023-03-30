@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider, UserInfo, AuthCredential, UserCredential, AuthProvider, OAuthCredential } from 'firebase/auth';
 import { environment as ENV} from 'src/environments/environment.development';
 import { User } from '../appInterfaces/user';
@@ -11,7 +11,10 @@ import { UserMemoryService } from './user-memory.service';
 
 export class UserService {
   public test = 'test';
-  constructor(private http: HttpClient, private userMemory: UserMemoryService) { }
+  constructor(
+    private http: HttpClient,
+    private userMemory: UserMemoryService,
+    private router: Router) { }
 
   signInWithGoogle = () => {
     return new Promise((resolve, reject)=>{
@@ -176,6 +179,11 @@ export class UserService {
           } else {
             reject ('CallBack validy compromise');
           }
+        },(error)=>{
+          this.router.navigate(
+            ['/auth'],
+            { queryParams: { error: 'ERR_CONNECTION_REFUSED'}}
+          );
         })
     })
   }

@@ -14,7 +14,7 @@ export class SyncLogsComponent  {
   constructor(private http: HttpClient){
     this.testSyncLogs()
   }
-  
+
   ngOnChange(){
 
   }
@@ -22,6 +22,16 @@ export class SyncLogsComponent  {
   testSyncLogs:any = async () => {
 
     this.http.post<any>('http://127.0.0.1:3007/divalto-sync/sync-logs',{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
+    )
+      .subscribe(data => {
+        console.log('Données souscrites : ',data);
+        this.callBackDomproSync = data;
+      })
+      console.log(this.callBackDomproSync);
+  }
+  testBridgeProductRef:any = async () => {
+
+    this.http.post<any>('http://127.0.0.1:3007/divalto-sync/product_bridge',{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
     )
       .subscribe(data => {
         console.log('Données souscrites : ',data);

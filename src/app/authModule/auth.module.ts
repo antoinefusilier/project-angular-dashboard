@@ -9,6 +9,7 @@ import { environment as env} from 'src/environments/environment.development';
 import { initializeApp } from 'firebase/app';
 import { SignupComponent } from './signup/signup.component';
 import { UserService } from '../appServices/user.service';
+import { IssuesComponent } from './issues/issues.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { UserService } from '../appServices/user.service';
     AuthComponent,
     SigninComponent,
     SignupComponent,
+    IssuesComponent,
   ],
   imports: [
     CommonModule,

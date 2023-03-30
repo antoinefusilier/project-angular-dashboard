@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserService } from '../appServices/user.service';
 import { DashboardComponent } from './dashboard.component';
 import { DivaltoSyncComponent } from './divalto-sync/divalto-sync.component';
+import { DocComponent } from './divalto-sync/doc/doc.component';
 import { ModuleProposalComponent } from './divalto-sync/module-proposal/module-proposal.component';
 import { SyncLogsComponent } from './divalto-sync/sync-logs/sync-logs.component';
 import { DomproSyncComponent } from './dompro-sync/dompro-sync.component';
@@ -82,6 +83,21 @@ const routes: Routes = [
           {
             path: 'modules-proposal',
             component: ModuleProposalComponent,
+            outlet: 'divalto'
+          },
+          {
+            path: 'heavy-sync',
+            component: HeavySyncComponent,
+            outlet: 'divalto'
+          },
+          {
+            path: 'light-sync',
+            component: LightSyncComponent,
+            outlet: 'divalto'
+          },
+          {
+            path: 'doc',
+            component: DocComponent,
             outlet: 'divalto'
           }
         ]
