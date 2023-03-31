@@ -27,6 +27,8 @@ import { ModuleProposalComponent } from './divalto-sync/module-proposal/module-p
 import { ListComponent } from './products-managment/list/list.component';
 import { SearchComponent } from './search/search.component';
 import { DocComponent } from './divalto-sync/doc/doc.component';
+import { ManualComponent } from './dompro-sync/heavy-sync/manual/manual.component';
+import { AutoComponent } from './dompro-sync/heavy-sync/auto/auto.component';
 
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { UserMemoryService } from '../appServices/user-memory.service';
@@ -55,6 +57,8 @@ import { DocComponent } from './divalto-sync/doc/doc.component';
     ListComponent,
     SearchComponent,
     DocComponent,
+    ManualComponent,
+    AutoComponent,
   ],
   imports: [
     CommonModule,
