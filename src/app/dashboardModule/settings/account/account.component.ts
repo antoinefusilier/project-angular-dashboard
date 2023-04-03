@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { map } from 'rxjs';
+import { User } from 'src/app/appInterfaces/user';
 import { UserService } from 'src/app/appServices/user.service';
 @Component({
   selector: 'app-account',
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/appServices/user.service';
 })
 export class AccountComponent implements OnInit {
 
-  @Input() currUser = {};
+  @Input() currUser: User | any = {};
   protected account = {
     type: 'admin',
     profile: {
@@ -25,6 +26,8 @@ export class AccountComponent implements OnInit {
       this.title = value.title
     })
   }
+
+
   getCurrentUser = async () => {
     this.Uservice.getCurrentUser().then((currentUser:any)=>{
       this.currUser = JSON.parse(currentUser)
@@ -40,12 +43,12 @@ export class AccountComponent implements OnInit {
     //   this.router.navigate(['']);
     // })
     // this.changeQuery();
- 
+
 
   changeQuery = () => {
     // this.router.navigate(['.'], {relativeTo: this.route, queryParams: {test1: '12345689'}})
   }
   ngOnInit(): void {
-
+    this.getCurrentUser()
   }
 }

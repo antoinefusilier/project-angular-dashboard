@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult } from 'firebase/auth';
 import { AlertsService } from 'src/app/appServices/alerts.service';
 import { UserService } from 'src/app/appServices/user.service';
 
@@ -39,8 +38,5 @@ export class SigninComponent {
       }).catch((err:any)=>{
         this.router.navigate(['/auth/signup']);
       })
-    }
-    saveUserInfo = async() => {
-
     }
 }

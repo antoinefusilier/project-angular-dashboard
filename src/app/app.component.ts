@@ -14,11 +14,14 @@ import { AlertsService } from './appServices/alerts.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent implements AfterViewInit, OnInit {
+export class AppComponent implements OnInit {
   public showOverlay: any | boolean = true;
   viewInit = false;
   title = 'angular_app';
-  @Input('ngModel') message:any;
+  @Input('ngModel') message:any = {
+    title: 'Chargement...',
+    description: 'Merci de bien vouloir patientez ...'
+  };
 
   callBackDomproSync:any;
 
@@ -67,9 +70,9 @@ export class AppComponent implements AfterViewInit, OnInit {
       this.showOverlay = true;
     }
   }
-  ngAfterViewInit(): void {
-      this.viewInit = true
-  }
+  // ngAfterViewInit(): void {
+  //     this.viewInit = true
+  // }
 
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
