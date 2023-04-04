@@ -136,6 +136,13 @@ export class UserService {
 
   }
 
+  signWithEmailPassword = () => {
+    return new Promise (async(resolve, reject)=>{
+      reject('unvailable');
+      return
+    })
+  }
+
   callVerifySession = async(user: any, credential?:Credential | OAuthCredential) => {
     return new Promise((resolve,reject)=>{
       let header = new HttpHeaders({
@@ -154,7 +161,6 @@ export class UserService {
             && callBack.validity.length > 10
             ){
 
-              console.log('CallBack backend google photo URL', callBack.user.provider.google.photoURL)
             // Call brother method for saved in local storage public user info
             await this.saveUserInfo({
               _id: callBack.user._id,
@@ -165,17 +171,19 @@ export class UserService {
                 token_id: callBack.user.secrets.token  || undefined,
                 public_key: callBack.user.secrets.public_key  || undefined
               },
-              providers: {
-                google: {
-                  photoURL: callBack.user.providers.google.photoURL,
-                  phone: callBack.user.providers.google.phone
+              providers: callBack.user.providers || undefined
 
-                } || undefined,
-                github: {
-                  photoURL: callBack.user.github.photoURL ,
-                  phone: callBack.user.providers.github.phone
-                } || undefined
-              }
+              // {
+                // google: {
+                  // photoURL: callBack.user.providers.google.photoURL,
+                  // phone: callBack.user.providers.google.phone
+//
+                // } || undefined,
+                // github: {
+                  // photoURL: callBack.user.github.photoURL ,
+                  // phone: callBack.user.providers.github.phone
+                // } || undefined
+              // }
               })
               // Success save user info on local storage
               .then(()=>{
