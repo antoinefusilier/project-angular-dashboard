@@ -7,11 +7,17 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "private",
+    "public": "./dist/angular_app",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
