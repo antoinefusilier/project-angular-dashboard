@@ -5,7 +5,6 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, ge
 import { environment as ENV} from 'src/environments/environment.development';
 import { User } from '../appInterfaces/user';
 import { UserMemoryService } from './user-memory.service';
-import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -153,7 +152,7 @@ export class UserService {
       let body = {
         user: user
       }
-      this.http.post(`${environment.backEnd.cr_auth}/verifySession`, body, {headers: header})
+      this.http.post('http://leblanc.sahirato.tech/auth/verifySession', body, {headers: header})
         .subscribe(async(callBack:any)=>{
           console.log('Réponse du backEnd',callBack);
           console.log('Callback validity', callBack.validity);
