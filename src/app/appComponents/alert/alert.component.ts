@@ -30,16 +30,17 @@ export class AlertComponent implements OnInit, OnDestroy{
       this.alertSubscription = this._alertService.onAlert(this.id)
         .subscribe(alert => {
           if(!alert.message){
-            console.log('pas d\'alert');
+            // console.log('pas d\'alert');
           }
           if (alert.id && alert.type == AlertType.Warning){
 
           }
+          this.alerts.pop();
           this.alerts.push(alert);
+          setInterval(()=>{
+            this.alerts.pop();
 
-          console.log(alert.id);
-          console.log(alert.type);
-          console.log(alert.message);
+          }, 10000)
 
         })
   }

@@ -1,0 +1,118 @@
+<mxfile host="65bd71144e">
+    <diagram id="JnTE1vm-kcvXw2b3VsFI" name="Page-1">
+        <mxGraphModel dx="2610" dy="1283" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Périmètre fonctionnel" style="shape=partialRectangle;html=1;top=1;align=left;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="-800" y="20" width="1640" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Antoine Fusilier - Remise Projet 2023 - 3W Academy - Développeur FullStack Web et Mobile" style="shape=partialRectangle;html=1;top=1;align=left;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="-800" y="1070" width="1640" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Objectif" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="-760" y="80" width="240" height="960" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Création d'un tableau de bord de gestion des synchronisation de données entre une base Prestashop et d'autre base de données" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="4">
+                    <mxGeometry x="-5" y="287.5" width="250" height="405" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Acteur" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;lifelineDashed=0;" vertex="1" parent="1">
+                    <mxGeometry x="-440" y="80" width="360" height="980" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Utilisateur" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="5">
+                    <mxGeometry x="55" y="200" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Administrateur" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="5">
+                    <mxGeometry x="55" y="670" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Posibilité" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;lifelineDashed=0;" vertex="1" parent="1">
+                    <mxGeometry y="80" width="360" height="980" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Accès au dashboard" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="6">
+                    <mxGeometry x="55" y="230" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Gérer" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="6">
+                    <mxGeometry x="55" y="700" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="Visualiser son compte" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="6">
+                    <mxGeometry x="55" y="460" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Fonctionnalité" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;lifelineDashed=0;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="80" width="320" height="980" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Ajouter un utilisateur" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="7">
+                    <mxGeometry x="35" y="632.5" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Activer/Désactiver un compte utilisateur" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="7">
+                    <mxGeometry x="35" y="730" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Supprimer un utilisateur" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="7">
+                    <mxGeometry x="30" y="820" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Verfiier et raffraichir les dernière mise à jour effectuées" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="7">
+                    <mxGeometry x="35" y="70" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Lancer une synchronisation lourde" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="7">
+                    <mxGeometry x="35" y="150" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Lancer une synchronisation légère" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="7">
+                    <mxGeometry x="35" y="230" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Changer la date de mise à jour automatique" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="7">
+                    <mxGeometry x="35" y="310" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Verifier les donnée de son compte" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="7">
+                    <mxGeometry x="35" y="420" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="Se déconnecter" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fontSize=18;" vertex="1" parent="7">
+                    <mxGeometry x="35" y="500" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="8" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="8" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="9" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="10" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="10" target="24">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="24" target="25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="24" target="26">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="9" target="24">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="11" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="11" target="17">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="11" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="11" target="19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="12" target="13">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="12" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="12" target="15">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { getAuth, signOut } from "firebase/auth";
 import { AlertsService } from 'src/app/appServices/alerts.service';
@@ -13,33 +13,35 @@ const auth = getAuth();
 })
 export class HeaderComponent implements OnInit {
 
-  userPictureURL: string = '';
-
+  @Input('ngModel') currUser: any = {};
+  @Input('ngModel') photoURL: any = String(this.currUser.photoURL)
   constructor(
     private router: Router,
     private Uservice: UserService,
     private aServ: AlertsService){
-
+      this.getCurrentUser()
   }
-  newAlerte(){
+
+  getCurrentUser = async () => {
+     this.Uservice.getCurrentUser().then((currentUser:any)=>{
+       this.currUser = JSON.parse(currentUser)})
+   }
+
+   alertNotWork(){
     // this.aServ.alertTest('test title', 'test description')
-    this.aServ.success('test title','Test success message');
+    this.aServ.error('En construction','La recherche n\'est pas encore disponible...');
   }
   ngOnInit(): void {
-    // console.log(this.currentUser.photoURL);
-    // this.userPictureURL = String(this.currentUser.photoURL)
+    this.getCurrentUser()
   }
   disconnect = async() => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-      console.log('Déconnexion ...')
-      this.router.navigate(['/auth'])
-
-    }).catch((error) => {
-      // An error happened.
-      console.log('Disconnect error ',error);
-
-    });
+    this.Uservice.signOut()
+      .then(()=>{
+        this.aServ.success('Déconnecté', 'Vous être bien déconnecté')
+      })
+      .catch((err:any)=>{
+        this.aServ.error('Erreur de déconnexion', 'Erreur lors de la déconnexion, veuillez le référer à un administrateur. Désolé pour la gène occasionnée');
+      })
 
   }
 

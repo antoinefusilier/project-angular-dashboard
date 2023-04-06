@@ -26,7 +26,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'welcome',
+        redirectTo: 'dompro',
         pathMatch: 'full'
       },
       {

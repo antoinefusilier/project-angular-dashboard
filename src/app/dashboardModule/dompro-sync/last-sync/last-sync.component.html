@@ -7,77 +7,8 @@
         </h1>
         <p class="mt-2 text-sm text-gray-300">Liste des synchronisation effectuée entre le serveur SFTP de Dompro, la base basserelles et les serveurs de fichiers.</p>
       </div>
-      <div>
-        <div>
-          <label for="combobox" class="block text-sm font-medium leading-6 text-gray-900">Assigned to</label>
-          <div class="relative mt-2">
-            <input id="combobox" type="text" class="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" role="combobox" aria-controls="options" aria-expanded="false">
-            <button type="button" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
-              <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
-              </svg>
-            </button>
-
-            <ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" id="options" role="listbox">
-              <!--
-                Combobox option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
-
-                Active: "text-white bg-indigo-600", Not Active: "text-gray-900"
-              -->
-              <li class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900" id="option-0" role="option" tabindex="-1">
-                <div class="flex items-center">
-                  <!-- Online: "bg-green-400", Not Online: "bg-gray-200" -->
-                  <span class="inline-block h-2 w-2 flex-shrink-0 rounded-full bg-green-400" aria-hidden="true"></span>
-                  <!-- Selected: "font-semibold" -->
-                  <span class="ml-3 truncate">
-                    Production
-                    <span class="sr-only"> is online</span>
-                  </span>
-                </div>
-
-
-                <!--
-                  Checkmark, only display for selected option.
-
-                  Active: "text-white", Not Active: "text-indigo-600"
-                -->
-                <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
-                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-              </li>
-              <li class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900" id="option-0" role="option" tabindex="-1">
-                <div class="flex items-center">
-                  <!-- Online: "bg-green-400", Not Online: "bg-gray-200" -->
-                  <span class="inline-block h-2 w-2 flex-shrink-0 rounded-full bg-orange-400" aria-hidden="true"></span>
-                  <!-- Selected: "font-semibold" -->
-                  <span class="ml-3 truncate">
-                    Developpement
-                    <span class="sr-only"> is online</span>
-                  </span>
-                </div>
-
-
-                <!--
-                  Checkmark, only display for selected option.
-
-                  Active: "text-white", Not Active: "text-indigo-600"
-                -->
-                <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
-                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-              </li>
-
-              <!-- More items... -->
-            </ul>
-          </div>
-        </div>
-      </div>
       <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <button type="button" class="block rounded-md bg-indigo-500 py-2 px-3 text-center text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Mettre à jour</button>
+        <button type="button" class="block rounded-md bg-green-500 py-2 px-3 text-center text-sm font-semibold text-white hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500" (click)="testSyncLogs()" >Mettre à jour</button>
       </div>
     </div>
     <div class="mt-8 flow-root">
@@ -86,28 +17,36 @@
           <table class="min-w-full divide-y divide-gray-700">
             <thead>
               <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">ID</th>
-                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Table visée</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Table(s) visée(s)</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Status</th>
-                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Ligne envoyées</th>
-                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Ligne reçues</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Produits Dompro</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Produits mise à jour</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Date et Heure début</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Date et Heure fin</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Durée</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-800">
-              <tr>
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">9514</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">dpro_stock_product</td>
+              <tr ng-model="callBackDomproSync" *ngFor="let log of callBackDomproSync" >
+
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.target_table}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
-                  <span class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">SUCCESS</span>
+                  <span *ngIf="log.status == 'SUCCESS'" class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">SUCCÈS</span>
+                  <span *ngIf="log.status == 'IN_PROGRESS'" class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-green-800">EN COURS</span>
+                  <span *ngIf="log.status == 'FINISHED'" class="inline-flex rounded-full bg-orange-100 px-2 text-xs font-semibold leading-5 text-green-800">TERMINÉE</span>
+
                 </td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">123003</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">117986</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">12:55:13 24-10-2023</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">12:58:43 24-10-2023</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">00:03:30</td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.lines_send}}</td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.lines_received}}</td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
+                  {{log.datetime_start}}
+                </td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
+                  {{log.datetime_end}}
+                </td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
+                  {{log.duration}}
+                </td>
               </tr>
 
               <!-- More people... -->

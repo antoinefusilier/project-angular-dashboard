@@ -17,6 +17,7 @@ export class AlertsService {
     return this.subject.asObservable().pipe(filter(x => x && x.id === id));
   }
   success(title: string, message: string, options?: any){
+
     this.alert(new Alert({...options, type: AlertType.Success, title,message}))
   }
   error(title: string, message: string, options?: AlertOptions) {

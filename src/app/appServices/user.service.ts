@@ -1,16 +1,21 @@
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider, UserInfo, AuthCredential, UserCredential, AuthProvider, OAuthCredential } from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider, UserInfo, AuthCredential, UserCredential, AuthProvider, OAuthCredential, signOut } from 'firebase/auth';
 import { environment as ENV} from 'src/environments/environment.development';
 import { User } from '../appInterfaces/user';
+
 import { UserMemoryService } from './user-memory.service';
+
+
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
   public test = 'test';
+  protected auth = getAuth();
   constructor(
     private http: HttpClient,
     private userMemory: UserMemoryService,
@@ -208,7 +213,18 @@ export class UserService {
   }
 
   callKillSession = async() => {
+    const auth = getAuth();
+    localStorage.removeItem('currentUser');
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      console.log('Déconnexion ...')
+      this.router.navigate(['/auth'])
 
+    }).catch((error) => {
+      // An error happened.
+      console.log('Disconnect error ',error);
+
+    });
   }
 
   getCurrentUser = () => {
@@ -243,4 +259,20 @@ export class UserService {
 
 
   }
+
+  signOut = async() => {
+    return new Promise(async(resolve,reject)=>{
+      signOut(this.auth).then(() => {
+        // Sign-out successful.
+        console.log('Déconnexion ...')
+        this.router.navigate(['/auth'])
+
+      }).catch((error) => {
+        // An error happened.
+        console.log('Disconnect error ',error);
+
+      });
+    })
+  }
+
 }

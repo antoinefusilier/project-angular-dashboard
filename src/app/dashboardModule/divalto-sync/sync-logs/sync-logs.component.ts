@@ -8,7 +8,7 @@ import { Component, OnChanges, Input} from '@angular/core';
 })
 export class SyncLogsComponent  {
 
-  @Input('ngModel') callBackDomproSync: Array<any> = [];
+  @Input('ngModel') callBackDivaltoSync: Array<any> = [];
 
 
   constructor(private http: HttpClient){
@@ -25,9 +25,9 @@ export class SyncLogsComponent  {
     )
       .subscribe(data => {
         console.log('Données souscrites : ',data);
-        this.callBackDomproSync = data;
+        this.callBackDivaltoSync = data;
       })
-      console.log(this.callBackDomproSync);
+      console.log(this.callBackDivaltoSync);
   }
   testBridgeProductRef:any = async () => {
 
@@ -35,8 +35,8 @@ export class SyncLogsComponent  {
     )
       .subscribe(data => {
         console.log('Données souscrites : ',data);
-        this.callBackDomproSync = data;
+        this.callBackDivaltoSync = data;
       })
-      console.log(this.callBackDomproSync);
+      console.log(this.callBackDivaltoSync);
   }
 }

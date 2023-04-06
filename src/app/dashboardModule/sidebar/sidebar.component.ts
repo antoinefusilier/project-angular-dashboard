@@ -1,12 +1,11 @@
 import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
 import { Event,Router,RouterEvent } from '@angular/router';
-import { getAuth, signOut } from "firebase/auth";
 import { filter } from 'rxjs';
 import { AlertsService } from 'src/app/appServices/alerts.service';
 import { UserService } from 'src/app/appServices/user.service';
 
 
-const auth = getAuth();
+
 
 declare var $:any
 @Component({
@@ -38,11 +37,19 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
   ngOnInit(){
     this.getCurrentUser()
-    console.log('CURRENT USER 2',this.currUser)
-
   }
   ngAfterViewInit(): void {
     this.displaySideBar()
+
+  }
+  disconnect = async() => {
+    this.Uservice.signOut()
+      .then(()=>{
+        this.aServ.success('Déconnecté', 'Vous être bien déconnecté')
+      })
+      .catch((err:any)=>{
+        this.aServ.error('Erreur de déconnexion', 'Erreur lors de la déconnexion, veuillez le référer à un administrateur. Désolé pour la gène occasionnée');
+      })
 
   }
   displaySideBar = () => {
@@ -72,27 +79,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   getCurrentUser = async () => {
     this.Uservice.getCurrentUser().then((currentUser:any)=>{
       this.currUser = JSON.parse(currentUser)
-      console.log('CURRENT USER',this.currUser)
-
-      })
+    })
   }
 
-  newAlerte(){
-    // this.aServ.alertTest('test title', 'test description')
-    this.aServ.success('test title','Test success message');
-  }
-
-  disconnect = async() => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-      console.log('Déconnexion ...')
-      this.router.navigate(['/auth'])
-
-    }).catch((error) => {
-      // An error happened.
-      console.log('Disconnect error ',error);
-
-    });
-
-  }
 }

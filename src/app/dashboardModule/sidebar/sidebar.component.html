@@ -46,13 +46,14 @@
       <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
         <div class="flex flex-shrink-0 items-center px-4">
           <div class="flex-initial rounded-md bg-white p-3 m-2">
-            <img _ngcontent-qnp-c19="" src="assets/logo_leblanc.png" alt="ETS Leblanc" class="h-8 w-auto bg-white border-1">
+            <img ng-model="photoURL" _ngcontent-qnp-c19="" src="assets/logo_leblanc.png" alt="ETS Leblanc" class="h-8 w-auto bg-white border-1">
           </div>
           <h2 class="p-2 text-white text-sm font-medium">Entreprise Leblanc</h2>
         </div>
         <nav class="mt-5 flex-1 space-y-1 px-2">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-          <a [routerLink]="'/dashboard'" class="bg-gray-900 text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+          <a [routerLink]="'/dashboard'" class="hover:bg-red-700
+          bg-red-400 bg-opacity-25 text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
             <!-- Current: "text-gray-300", Default: "text-gray-400 group-hover:text-gray-300" -->
             <svg class="text-gray-300 mr-3 h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
@@ -60,39 +61,43 @@
             Réception
           </a>
 
-          <a href="/dashboard/users" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+          <a [routerLink]="'/dashboard/users'" class="text-gray-300 hover:bg-red-700
+          bg-red-400 bg-opacity-25 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
             <svg class="text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
             </svg>
             Clients
           </a>
-          <a href="/dashboard/products" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+          <a [routerLink]="'/dashboard/products'"class="text-gray-300 hover:bg-red-700
+          bg-red-400 bg-opacity-25 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
             Produits
           </a>
-          <a href="/dashboard/dompro" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+          <a [routerLink]="'/dashboard/dompro'" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
             </svg>
 
             Dompro
           </a>
-          <a href="/dashboard/divalto" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+          <a [routerLink]="'/dashboard/divalto'" class="text-gray-300 hover:bg-orange-700
+          bg-orange-400 bg-opacity-25 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
             </svg>
             Divalto
           </a>
-          <a href="/dashboard/juridic" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+          <a [routerLink]="'/dashboard'" class="text-gray-300 hover:bg-red-700
+          bg-red-400 bg-opacity-25 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
             </svg>
 
             Juridique
           </a>
-          <a href="/dashboard/pages" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+          <a [routerLink]="'/dashboard'" class="text-gray-300 hover:bg-red-700 hover:text-white group bg-red-400 bg-opacity-25 flex items-center rounded-md px-2 py-2 text-sm font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
             </svg>
@@ -106,10 +111,11 @@
       <a href="#" class="group inline-block w-full flex-shrink-0">
         <div ng-model="currUser" class="flex justify-between items-center w-full">
           <div class="min-w-fit">
-            <img class="inline-block h-9 w-9 rounded-full bg-white" src="assets/logo_leblanc.png" alt="">
+            <img ng-model="currUser" class="inline-block h-9 w-9 rounded-full bg-white" src="{{this.currUser.providers.google.photoURL}}" alt="">
           </div>
+
           <div ng-model="currUser" class=" w-full ml-3">
-            <p ng-model="currUser" class="text-sm font-medium text-white">{{currUser.first_name || '...'}}  {{ currUser.last_name || '...'}}</p>
+            <p ng-model="currUser" class="text-sm font-medium text-white">{{currUser.first_name || '...'}} {{ currUser.last_name || '...'}}</p>
             <p class="inline-block text-xs font-medium text-gray-300 whitespace-pre-line group-hover:text-gray-200 max-w-min w-20">{{currUser.email.slice(0,20) || 'Pas d\'email'}}{{'...'}}</p>
           </div>
           <a [routerLink]="['settings',{outlets: {settings: 'account'}}]" class="ml-7 inline max-w-min">
@@ -118,10 +124,10 @@
             </svg>
           </a>
         </div>
-        <div class="block w-100">
+        <a [routerLink]="['settings',{outlets: {settings: 'account'}}]"  class="block w-100">
 
           <button type="button" class="block rounded-md bg-green-300/10 w-100 min-w-full py-2 px-3 mt-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-400/20">Profil</button>
-        </div>
+        </a>
         <button type="button" (click)="disconnect()" class="block  rounded-md bg-red-300/10 w-100 min-w-full py-2 px-3 mt-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-400/20">Déconnexion</button>
 
       </a>
@@ -149,7 +155,8 @@
       </div>
       <nav class="mt-5 flex-1 space-y-1 px-2">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a [routerLink]="'/dashboard'" class="bg-gray-900 text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+        <a [routerLink]="'/dashboard'" class="hover:bg-red-700
+        bg-red-400 bg-opacity-25 text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
           <!-- Current: "text-gray-300", Default: "text-gray-400 group-hover:text-gray-300" -->
           <svg class="text-gray-300 mr-3 h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
@@ -157,39 +164,43 @@
           Réception
         </a>
 
-        <a href="/dashboard/users" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+        <a [routerLink]="'/dashboard/users'" class="text-gray-300 hover:bg-red-700
+        bg-red-400 bg-opacity-25 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
           <svg class="text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
           </svg>
           Clients
         </a>
-        <a href="/dashboard/products" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+        <a [routerLink]="'/dashboard/products'"class="text-gray-300 hover:bg-red-700
+        bg-red-400 bg-opacity-25 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
           </svg>
           Produits
         </a>
-        <a href="/dashboard/dompro" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+        <a [routerLink]="'/dashboard/dompro'" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
           </svg>
 
           Dompro
         </a>
-        <a href="/dashboard/divalto" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+        <a [routerLink]="'/dashboard/divalto'" class="text-gray-300 hover:bg-orange-700
+        bg-orange-400 bg-opacity-25 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
           </svg>
           Divalto
         </a>
-        <a href="/dashboard/juridic" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+        <a [routerLink]="'/dashboard'" class="text-gray-300 hover:bg-red-700
+        bg-red-400 bg-opacity-25 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
           </svg>
 
           Juridique
         </a>
-        <a href="/dashboard/pages" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+        <a [routerLink]="'/dashboard'" class="text-gray-300 hover:bg-red-700 hover:text-white group bg-red-400 bg-opacity-25 flex items-center rounded-md px-2 py-2 text-sm font-medium">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400 group-hover:text-gray-300 mr-3 h-6 w-6 flex-shrink-0">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
           </svg>
@@ -206,7 +217,7 @@
       <a href="#" class="group inline-block w-full flex-shrink-0">
         <div ng-model="currUser" class="flex justify-between items-center w-full">
           <div class="min-w-fit">
-            <img class="inline-block h-9 w-9 rounded-full bg-white" src="assets/logo_leblanc.png" alt="">
+            <img class="inline-block h-9 w-9 rounded-full bg-white" src="{{this.currUser.providers.google.photoURL}}" alt="">
           </div>
           <div ng-model="currUser" class=" w-full ml-3">
             <p ng-model="currUser" class="text-sm font-medium text-white">{{currUser.first_name || '...'}}  {{ currUser.last_name || '...'}}</p>
@@ -218,10 +229,10 @@
             </svg>
           </a>
         </div>
-        <div class="block w-100">
+        <a [routerLink]="['settings',{outlets: {settings: 'account'}}]" class="block w-100">
 
-          <button type="button" class="block rounded-md bg-green-300/10 w-100 min-w-full py-2 px-3 mt-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-400/20">Profil</button>
-        </div>
+          <button  type="button" class="block rounded-md bg-green-300/10 w-100 min-w-full py-2 px-3 mt-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-400/20">Profil</button>
+        </a>
         <button type="button" (click)="disconnect()" class="block  rounded-md bg-red-300/10 w-100 min-w-full py-2 px-3 mt-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-400/20">Déconnexion</button>
 
       </a>
