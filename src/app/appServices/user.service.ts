@@ -72,7 +72,7 @@ export class UserService {
                 additionInfos: userData
               }
 
-              let req1 = this.http.post('http://localhost:3007/cr-auth/newUser', body, {headers: header})
+              let req1 = this.http.post('http://leblanc.sahirato.tech/auth/newUser', body, {headers: header})
               req1.subscribe((value:any)=>{
                 console.log('Réponse du backEnd',value);
               })
@@ -159,8 +159,8 @@ export class UserService {
       }
       this.http.post('http://leblanc.sahirato.tech/auth/verifySession', body, {headers: header})
         .subscribe(async(callBack:any)=>{
-          console.log('Réponse du backEnd',callBack);
-          console.log('Callback validity', callBack.validity);
+          // console.log('Réponse du backEnd',callBack);
+          // console.log('Callback validity', callBack.validity);
           if(callBack.validity === ENV.app.valid_return_key
             && typeof(callBack.validity) === 'string'
             && callBack.validity.length > 10
@@ -232,8 +232,9 @@ export class UserService {
 
       const localUser: UserInfo | any = localStorage.getItem('currentUser')
 
-      console.log('getCurrentUser', localUser);
-      console.log('getCurrentUser PARSED', JSON.parse(localUser));
+      // console.log('getCurrentUser', localUser);
+      // console.log('getCurrentUser PARSED', JSON.parse(localUser));
+      resolve(localUser);
 
 
       if (localUser.provider === 'google.com'){
@@ -241,7 +242,6 @@ export class UserService {
         const auth = getAuth();
         if(auth.currentUser){
           console.log(auth.currentUser)
-          resolve(localUser);
         } else {
           reject('Impossible to get current user data');
         }

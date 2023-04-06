@@ -35,12 +35,13 @@ export class AlertComponent implements OnInit, OnDestroy{
           if (alert.id && alert.type == AlertType.Warning){
 
           }
-          this.alerts.pop();
+          // this.alerts.pop();
           this.alerts.push(alert);
-          setInterval(()=>{
-            this.alerts.pop();
+          if(this.alerts.length > 2){
 
-          }, 10000)
+            this.alerts.pop();
+          }
+
 
         })
   }
@@ -53,10 +54,13 @@ export class AlertComponent implements OnInit, OnDestroy{
     // const timeout = this.fade ? 250 : 0;
     // alert.fade = this.fade;
     if (alert.id){
-      let alertDOM = document.getElementById('default-alert');
-      if(alertDOM){
-        alertDOM.style.display = 'none';
-      }
+      // setInterval(()=>{
+        let alertDOM = document.getElementById('default-alert');
+        if(alertDOM){
+          alertDOM.style.display = 'none';
+          alertDOM.remove()
+        }
+      // },30000)
     }
 
 

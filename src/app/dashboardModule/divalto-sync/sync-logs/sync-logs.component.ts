@@ -21,7 +21,7 @@ export class SyncLogsComponent  {
 
   testSyncLogs:any = async () => {
 
-    this.http.post<any>('http://127.0.0.1:3007/divalto-sync/sync-logs',{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
+    this.http.post<any>('http://leblanc.sahirato.tech/divalto/sync-logs',{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
     )
       .subscribe(data => {
         console.log('Données souscrites : ',data);
