@@ -1,0 +1,67 @@
+prestashop_product_import_file
+Product ID: Number
+Active (0/1): Number
+Name *: String
+Categories (x,y,z...): String
+Price tax excluded: Number
+Tax rules ID: Number
+Wholesale price: Number
+On sale (0/1): Number
+Discount amount: Number
+Discount percent: Number
+Discount from (yyyy-mm-dd): String
+Discount to (yyyy-mm-dd): String
+Reference #: String
+Supplier reference #: String
+Supplier: String
+Manufacturer: String
+EAN13: Number
+UPC: String
+Ecotax: Number
+Width: Number
+Height: Number
+Depth: Number
+Weight: Number
+Delivery time of in-stock products: String
+Delivery time of out-of-stock products with allowed orders: String
+Quantity: Number
+Minimal quantity: Number
+Low stock level: Number
+Send me an email when the quantity is under this level: String
+Visibility: String
+Additional shipping cost: Number
+Unity: String
+Unit price: Number
+Summary: String
+Description: String
+Tags (x,y,z...): String
+Meta title: String
+Meta keywords: String
+Meta description: String
+URL rewritten: String
+Text when in stock: String
+Text when backorder allowed: String
+Available for order (0 = No, 1 = Yes): Number
+Product available date: String
+Product creation date: String
+Show price (0 = No, 1 = Yes): Number
+Image URLs (x,y,z...): String
+Image alt texts (x,y,z...): String
+Delete existing images (0 = No, 1 = Yes): Number
+Feature(Name:Value:Position): String
+Available online only (0 = No, 1 = Yes): Number
+Condition: String
+Customizable (0 = No, 1 = Yes): Number
+Uploadable files (0 = No, 1 = Yes): Number
+Text fields (0 = No, 1 = Yes): Number
+Out of stock action: Number
+Virtual product: Number
+File URL: String
+Number of allowed downloads: Number
+Expiration date: String
+Number of days: Number
+ID / Name of shop: String
+Advanced stock management: Number
+Depends On Stock: Number
+Warehouse: Number
+Acessories  (x,y,z...): Number
