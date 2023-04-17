@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate, CanLoad, CanMatch {
 
   }
 
-  // auth = getAuth();
+  auth = getAuth();
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
