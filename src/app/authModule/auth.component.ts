@@ -24,7 +24,6 @@ export class AuthComponent implements OnInit {
     private router: Router){
 
 
-
   }
 
 

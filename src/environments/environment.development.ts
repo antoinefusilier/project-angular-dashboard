@@ -2,6 +2,7 @@ export const environment = {
   firebaseConfig: {
     apiKey: "AIzaSyAxZfB-DdM7w0ap6pzZ65LLxgCj6SbxIhc",
     authDomain: "dashboard-angular-4156e.firebaseapp.com",
+    databaseURL: "https://dashboard-angular-4156e-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "dashboard-angular-4156e",
     storageBucket: "dashboard-angular-4156e.appspot.com",
     messagingSenderId: "676467061736",
@@ -18,9 +19,9 @@ export const environment = {
     invalid_return_key: "5QMnr!j*eL^3Xze9Cd2F8aH95NvH2gaG8SMEL7a&wyQPTr2n4fMmNgD%%&^&"
   },
   backEnd: {
-    url: "http://leblanc.sahirato.tech/",
-    cr_auth: "http://leblanc.sahirato.tech/auth",
-    cr_dompro_sync: "http://leblanc.sahirato.tech/dpro"
+    url: "http://localhost:3007/",
+    cr_auth: "http://localhost:3007/cr-auth",
+    cr_dompro_sync: "http://localhost:3007/dompro-sync"
   }
 
 };

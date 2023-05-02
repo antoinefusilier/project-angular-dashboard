@@ -5,11 +5,13 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { SigninComponent } from './signin/signin.component';
 
-import { environment as env} from 'src/environments/environment.development';
-import { initializeApp } from 'firebase/app';
 import { SignupComponent } from './signup/signup.component';
 import { UserService } from '../appServices/user.service';
 import { IssuesComponent } from './issues/issues.component';
+import { environment as env} from 'src/environments/environment.development';
+import { initializeApp } from 'firebase/app';
+
+const app = initializeApp(env.firebaseConfig);
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import { IssuesComponent } from './issues/issues.component';
 
 export class AuthModule {
   constructor(){
-    const app = initializeApp(env.firebaseConfig);
+
 
   }
 

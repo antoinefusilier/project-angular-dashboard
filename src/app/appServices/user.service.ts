@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider, UserInfo, AuthCredential, UserCredential, AuthProvider, OAuthCredential, signOut } from 'firebase/auth';
-import { environment as ENV} from 'src/environments/environment.development';
+import { environment as ENV, environment} from 'src/environments/environment.development';
 import { User } from '../appInterfaces/user';
 
 import { UserMemoryService } from './user-memory.service';
@@ -72,7 +72,7 @@ export class UserService {
                 additionInfos: userData
               }
 
-              let req1 = this.http.post('http://leblanc.sahirato.tech/auth/newUser', body, {headers: header})
+              let req1 = this.http.post(`${environment.backEnd.cr_auth}/newUser`, body, {headers: header})
               req1.subscribe((value:any)=>{
                 console.log('Réponse du backEnd',value);
               })
@@ -157,7 +157,7 @@ export class UserService {
       let body = {
         user: user
       }
-      this.http.post('http://leblanc.sahirato.tech/auth/verifySession', body, {headers: header})
+      this.http.post(`${environment.backEnd.cr_auth}/verifySession`, body, {headers: header})
         .subscribe(async(callBack:any)=>{
           // console.log('Réponse du backEnd',callBack);
           // console.log('Callback validity', callBack.validity);

@@ -2,6 +2,7 @@ export const environment = {
   firebaseConfig: {
     apiKey: "AIzaSyAxZfB-DdM7w0ap6pzZ65LLxgCj6SbxIhc",
     authDomain: "dashboard-angular-4156e.firebaseapp.com",
+    databaseURL: "https://dashboard-angular-4156e-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "dashboard-angular-4156e",
     storageBucket: "dashboard-angular-4156e.appspot.com",
     messagingSenderId: "676467061736",
