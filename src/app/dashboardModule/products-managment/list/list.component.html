@@ -15,12 +15,15 @@
       </div>
 
       <div class="mt-6 -mb-6 flow-root divide-y divide-gray-200 border-t border-gray-200">
-        <div class="py-6 sm:flex">
+        <div *ngFor="let prod of products" class="py-6 sm:flex">
           <div class="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
-            <img src="https://tailwindui.com/img/ecommerce-images/order-history-page-07-product-01.jpg" alt="Brass puzzle in the shape of a jack with overlapping rounded posts." class="h-20 w-20 flex-none rounded-md object-cover object-center sm:h-48 sm:w-48">
+            <svg role="img" class="o-icon o-icon--large">
+              <use [attr.xlink:href]="prod[71].elements[1].elements[0].attributes"></use>
+            </svg>
+            <img *ngIf="prod[45]" src="https://files.etsleblanc.com/product/no_picture.jpg" alt="Brass puzzle in the shape of a jack with overlapping rounded posts." class="h-20 w-20 flex-none rounded-md object-cover object-center sm:h-48 sm:w-48">
             <div class="min-w-0 flex-1 pt-1.5 sm:pt-0">
               <h3 class="text-sm font-medium text-gray-900">
-                <a href="#">Machined Brass Puzzle</a>
+                <a href="#">{{'werwer'}}</a>
               </h3>
               <p class="truncate text-sm text-gray-500">
                 <span>Brass</span>

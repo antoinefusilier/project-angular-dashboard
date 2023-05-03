@@ -26,9 +26,12 @@ import { SyncLogsComponent } from './divalto-sync/sync-logs/sync-logs.component'
 import { ModuleProposalComponent } from './divalto-sync/module-proposal/module-proposal.component';
 import { ListComponent } from './products-managment/list/list.component';
 import { SearchComponent } from './search/search.component';
-import { DocComponent } from './divalto-sync/doc/doc.component';
+import { DocComponent } from './doc/doc.component';
 import { ManualComponent } from './dompro-sync/heavy-sync/manual/manual.component';
 import { AutoComponent } from './dompro-sync/heavy-sync/auto/auto.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormComponent } from './doc/form/form.component';
+import { ConfirmDeleteComponent } from './doc/confirm-delete/confirm-delete.component'
 
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { UserMemoryService } from '../appServices/user-memory.service';
@@ -59,6 +62,8 @@ import { AutoComponent } from './dompro-sync/heavy-sync/auto/auto.component';
     DocComponent,
     ManualComponent,
     AutoComponent,
+    FormComponent,
+    ConfirmDeleteComponent,
   ],
   imports: [
     CommonModule,

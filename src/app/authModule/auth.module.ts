@@ -32,7 +32,7 @@ const app = initializeApp(env.firebaseConfig);
 
 export class AuthModule {
   constructor(){
-
+    
 
   }
 

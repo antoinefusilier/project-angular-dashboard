@@ -21,7 +21,9 @@ export const environment = {
   backEnd: {
     url: "http://localhost:3007/",
     cr_auth: "http://localhost:3007/cr-auth",
-    cr_dompro_sync: "http://localhost:3007/dompro-sync"
+    cr_dompro_sync: "http://localhost:3007/dompro-sync",
+    cr_product: "http://localhost:3007/product-manager/product",
+    cr_doc: "http://localhost:3007/cr-doc"
   }
 
 };
