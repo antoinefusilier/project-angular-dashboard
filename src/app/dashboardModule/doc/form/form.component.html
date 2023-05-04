@@ -1,3 +1,8 @@
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 <div ng-model="currentForm" class="space-y-10 divide-y divide-gray-900/10">
   <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
 
@@ -9,6 +14,18 @@
         <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Groupe</label>
         <div class="mt-2">
           <input type="text" name="group" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{form.group}}">
+        </div>
+      </div>
+      <div class="sm:col-span-3">
+        <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Groupe</label>
+        <div class="mt-2">
+          <select id="country" name="category" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+            <option value="google" ></option>
+            <option value="cms">CMS (Prestashop)</option>
+            <option value="divalto">Divalto</option>
+            <option value="steloi">ST Eloi Server</option>
+            <option value="network">Réseau</option>
+          </select>
         </div>
       </div>
       <div class="sm:col-span-3">
@@ -134,9 +151,12 @@
         </div>
       </div>
       <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-        <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+        <button (click)="close('form')" type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
         <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
       </div>
     </form>
   </div>
+</div>
+</div>
+</div>
 </div>

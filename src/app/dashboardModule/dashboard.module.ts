@@ -31,7 +31,8 @@ import { ManualComponent } from './dompro-sync/heavy-sync/manual/manual.componen
 import { AutoComponent } from './dompro-sync/heavy-sync/auto/auto.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormComponent } from './doc/form/form.component';
-import { ConfirmDeleteComponent } from './doc/confirm-delete/confirm-delete.component'
+import { ConfirmDeleteComponent } from './doc/confirm-delete/confirm-delete.component';
+import { PreviewComponent } from './doc/preview/preview.component'
 
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { UserMemoryService } from '../appServices/user-memory.service';
@@ -64,6 +65,7 @@ import { ConfirmDeleteComponent } from './doc/confirm-delete/confirm-delete.comp
     AutoComponent,
     FormComponent,
     ConfirmDeleteComponent,
+    PreviewComponent,
   ],
   imports: [
     CommonModule,

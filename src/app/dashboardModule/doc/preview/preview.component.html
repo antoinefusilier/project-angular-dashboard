@@ -1,0 +1,64 @@
+<div class="relative z-10 w-full" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-gray-500  bg-opacity-75 transition-opacity"></div>
+
+  <div class="fixed inset-0 w-full z-10 overflow-y-auto">
+    <div class="flex w-full  min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+  <div (click)="close('preview')" class="bg-white px-4 py-5 sm:px-6 rounded-md">
+  <div class="flex space-x-2 flex-col  " >
+    <div class="flex flex-shrink-0 inline-block absolute right-0 mr-10">
+      <button (click)="close('preview')" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+        <span class="sr-only">Close</span>
+        <svg class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+        </svg>
+      </button>
+    </div>
+    <div *ngIf="doc.imageURL !== '' && doc.imageURL !== null " class="flex-shrink-0">
+      <img class="aspect-[3/2] h-20 w-20 rounded-full rounded-2xl object-cover" src="{{doc.imageURL}}" alt="">
+    </div>
+    <div class="min-w-0 flex-1">
+      <h1 class="text-lg font-semibold text-gray-900">
+        <a href="#" class="hover:underline">{{doc.name}}</a>
+      </h1>
+      <p class="text-sm text-gray-500">
+        <a href="#" class="hover:underline">{{doc.description}} </a>
+      </p>
+      <h2 class="text-sm mt-2 font-semibold text-gray-900">
+        <a href="#" class="hover:underline">Questions :</a>
+      </h2>
+      <ul>
+        <li *ngFor="let q of doc.question">
+          <p class="text-sm text-gray-500">
+            <a href="#" class="hover:underline">{{q}} </a>
+          </p>
+        </li>
+      </ul>
+
+      <h2 class="text-sm mt-2 font-semibold text-gray-900">
+        <a href="#" class="hover:underline">Réponse :</a>
+      </h2>
+      <p class="text-sm text-gray-500">
+        <a href="#" class="hover:underline">{{doc.response}} </a>
+      </p>
+
+      <div>
+        <a type="button" class="m-4 rounded-full bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Voir le fichier</a>
+        <a type="button" class="rounded-full bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Voir la vidéo</a>
+      </div>
+      <div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+  <div class="w-full"style="height: 500px">
+
+      <iframe class="inline-block w-full min-h-full"  src="{{doc.iframe}}" frameborder="0"></iframe>
+    </div>
+</div>
+</div>
+</div>
+
+</div>

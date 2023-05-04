@@ -10,40 +10,65 @@ import { environment } from 'src/environments/environment.development';
 })
 export class DocComponent implements OnInit {
 
-  openForm = true;
+  testId = '64525f11dd82267d2c4a7623';
+  selectedId:any;
+  @Input() openForm = false;
+  @Input() openDelete = false;
+  @Input() openPreview = false;
+  @Input() openOptions = false;
+  @Input() currentForm:any | undefined;
 
-  @Input('ng-model') currentForm: any = {
-    id: null,
-    goup: 'Google',
-    category: 'Doc',
-    team: 'Admin',
-    type: 'Google Admin',
-    name: 'Gestion des utilisateur dans Google Admin',
-    questions: ['Comment supprimer un utilisateur Google ?', 'Comment ajouter un utilisateur google ?', 'Comment modifier un utilisateur google ?'],
-    description: 'Protocoles de gestion des utilisateur Google de l\'entreprise',
-    response: 'Voir document et ressources...',
-    link: '',
-    iframe: '',
-    imageURL: 'files.etsleblanc.com/doc/image/base/no_picture.jpg',
-    videoURL: ''
-  };
+  @Input('ngModel') docList: Array<any> = [];
 
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
     "Accept" : "application/json"
   })
-
-  @Input('ngModel') docList: Array<any> = [];
-
   constructor(private http: HttpClient,
     private AS: AlertsService){
       this.listDocs()
+  }
+
+  closePart(part: string) {
+    if(part === 'delete'){
+      this.openDelete = false;
+      this.listDocs()
+
+    } else if (part === 'form'){
+      this.openForm = false;
+      this.listDocs()
+
+    } else if (part === 'preview'){
+      this.openPreview = false;
+    }
+    // this.items.push(newItem);
   }
   listDocs = async () =>{
     this.http.get(`${environment.backEnd.cr_doc}/list`, {headers: this.headers})
     .subscribe((value:any)=>{
       // console.log(value)
-      this.docList = value
+
+      if(value.length > 0){
+        this.docList = value
+        // this.currentForm = this.docList[0];
+      } else {
+        this.docList = [{
+          id: '1',
+          goup: 'Aucun group',
+          category: 'Aucune catégorie',
+          team: 'Aucune équipe',
+          type: 'Aucun type',
+          name: 'Nom indéfini...',
+          questions: ['Question 1 ... vide ?', 'Question 2 ... vide ?', 'Question 3 ... vide ?'],
+          description: 'Pas de description',
+          response: 'Pas de ressources ni de document...',
+          link: 'Pas d\'URL',
+          iframe: 'Pas d\'iframe',
+          imageURL: 'Pas d\'URL',
+          videoURL: 'Pas d\'URL'
+        }]
+      }
+
       console.log(this.docList)
     }, (error)=>{
       if (error) {
@@ -52,13 +77,20 @@ export class DocComponent implements OnInit {
     })
   }
   getById =async(id:string)=>{
-    this.http.get(`${environment.backEnd.cr_doc}/:id`, {headers: this.headers, params: {
-      id: id
-    }})
+    this.http.get(`${environment.backEnd.cr_doc}/doc/${id}`, {headers: this.headers})
     .subscribe((value:any)=>{
       // console.log(value)
-      this.docList = value
+      this.currentForm = value
+      // this.docList = [value]
+      let inter = setInterval(()=>{
+
+        this.openPreview = true
+      }, 2000)
+      clearInterval(inter);
+      console.log(value)
       console.log(this.docList)
+      console.log(this.currentForm)
+
     }, (error)=>{
       if (error) {
         console.error(error)
