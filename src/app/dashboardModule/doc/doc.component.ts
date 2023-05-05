@@ -16,6 +16,8 @@ export class DocComponent implements OnInit {
   @Input() openDelete = false;
   @Input() openPreview = false;
   @Input() openOptions = false;
+  @Input() openSearch = false;
+
   @Input() currentForm:any | undefined;
 
   @Input('ngModel') docList: Array<any> = [];
@@ -60,6 +62,8 @@ export class DocComponent implements OnInit {
 
     } else if (part === 'preview'){
       this.openPreview = false;
+    } else if (part === 'search'){
+      this.openSearch = false;
     }
     // this.items.push(newItem);
   }

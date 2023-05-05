@@ -42,8 +42,8 @@
       </p>
 
       <div>
-        <a type="button" class="m-4 rounded-full bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Voir le fichier</a>
-        <a type="button" class="rounded-full bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Voir la vidéo</a>
+        <a href="{{doc.link}}" type="button" class="m-4 rounded-full bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Voir le fichier</a>
+        <a href="{{doc.videoURL}}" type="button" class="rounded-full bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Voir la vidéo</a>
       </div>
       <div>
 
@@ -53,9 +53,9 @@
     </div>
 
   </div>
-  <div class="w-full"style="height: 500px">
+  <div  class="w-full"style="height: 500px">
 
-      <iframe class="inline-block w-full min-h-full"  src="{{doc.iframe}}" frameborder="0"></iframe>
+      <iframe [id]="doc._id" class="inline-block w-full min-h-full"  src="https://docs.google.com/document/d/e/2PACX-1vSqCRV8_DQrUGFtTlU78Wds2TfWAu9MBsPTPewrAPwxkeoX2UEBTcLhI_yBKOX6Fk4ikCLJjHZHQyRU/pub?embedded=true"></iframe>
     </div>
 </div>
 </div>

@@ -9,7 +9,7 @@
 
     <form #docForm="ngForm" (ngSubmit)="docForm" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
 
-      <input type="hidden" name="_id" [(ngModel)]="form._id">
+      <input type="hidden" name="_id" [(ngModel)]="form._id" value="{{form._id || 0}}">
 
       <div class="px-4 py-6 sm:p-8">
 
@@ -20,9 +20,11 @@
           <select [(ngModel)]="form.group" id="country" name="group" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
             <option value="google" ></option>
             <option value="cms">CMS (Prestashop)</option>
-            <option value="divalto">Divalto</option>
-            <option value="steloi">ST Eloi Server</option>
-            <option value="network">Réseau</option>
+            <option value="divalto">ERP (Divalto)</option>
+            <option value="steloi">ERP (ST Eloi)</option>
+            <option value="network">Réseau Privé Local</option>
+            <option value="network">Réseau Cloud</option>
+            <option value="service_software">Logiciel Cloud</option>
           </select>
         </div>
       </div>
@@ -30,11 +32,18 @@
         <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Category</label>
         <div class="mt-2">
           <select [(ngModel)]="form.category" id="category" name="category" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-            <option value="google" >Google</option>
-            <option value="cms">CMS (Prestashop)</option>
+            <option value="google_cloud" >Google Cloud</option>
+            <option value="google_workspace" >Google Workspace</option>
+            <option value="google_account" >Google Account</option>
+            <option value="google_admin" >Google Admin</option>
+            <option value="gdoc" >Google Doc (.gdoc)</option>
+            <option value="google_workspace" >WinSCP</option>
+            <option value="hostinger" >Hostinger</option>
+            <option value="nordpass" >NordPass</option>
+            <option value="nordpass" >NordVPN</option>
             <option value="divalto">Divalto</option>
             <option value="steloi">ST Eloi Server</option>
-            <option value="network">Réseau</option>
+            <option value="excel" >Excel (.xlsx)</option>
           </select>
         </div>
       </div>
@@ -42,12 +51,14 @@
         <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Type</label>
         <div class="mt-2">
           <select [(ngModel)]="form.type" id="country" name="type" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+            <option value="create">Création</option>
             <option value="import" >Import</option>
             <option value="export" >Export</option>
             <option value="update">Mise à jour</option>
             <option value="manual">Action manuelle</option>
             <option value="remove">Suppression</option>
             <option value="get">Récupération d'information</option>
+            <option value="install">Installation</option>
           </select>
         </div>
       </div>
@@ -123,7 +134,7 @@
             <div class="mt-2">
               <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
-                <input [(ngModel)]="form.videoURL" type="text" name="videoURL" id="website" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="www.example.com" >
+                <input ngDefaultControl [(ngModel)]="form.videoURL" type="text" name="videoURL" id="website" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="www.example.com" value="{{form.videoURL}}" >
               </div>
             </div>
           </div>
