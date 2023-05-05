@@ -1,5 +1,5 @@
 <app-form ng-model="openForm" *ngIf="openForm === true" [form]="currentForm" (closeEvent)="closePart($event)"></app-form>
-<app-preview ng-model="currentForm" *ngIf="openPreview === true" [doc]="currentForm" (closeEvent)="closePart($event)"></app-preview>
+<app-preview ng-model="currentForm" *ngIf="openPreview === true" [doc]="currentForm" (closeEvent)="closePart($event)" (newDoc)="newDoc($event)"></app-preview>
 <app-confirm-delete ng-model="openDelete" *ngIf="openDelete === true" [docToDelete]="currentForm" (closeEvent)="closePart($event)"></app-confirm-delete>
 <div class="p-4">
   <div class="md:flex md:items-center md:justify-between">
@@ -7,17 +7,17 @@
     <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Documentation</h2>
   </div>
   <div class="mt-4 flex md:ml-4 md:mt-0">
-    <button type="button" class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Nouvelle Doc</button>
+    <button (click)="newDoc({})" type="button" class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Nouvelle Doc</button>
   </div>
 </div>
 
 <ul  role="list" class="divide-y divide-gray-100 m-2">
-  <li (mouseleave)="openOptions = false" ng-model="docList" *ngFor="let doc of docList" [id]="doc._id" class="flex flex-row items-center justify-between gap-x-6 py-5">
-    <img class="aspect-[3/2]  h-20 w-20 rounded-full rounded-2xl object-cover" src="{{doc.imageURL}}" alt="">
+  <li (mouseleave)="openOptions = false" ng-model="docList" *ngFor="let doc of docList" [id]="doc._id" class="flex flex-row items-center justify-between gap-x-6 py-5 text-gray-300 hover:bg-gray-200 hover:text-white rounded-md p-1">
+    <img class="aspect-[3/2]  h-20 w-20 rounded-full rounded-2xl object-cover " src="{{doc.imageURL}}" alt="">
     <div (click)="openPreview = true" class="min-w-0">
 
       <div class="flex items-start gap-x-3">
-        <p class="text-sm font-semibold leading-6 text-gray-900">{{doc.name}}</p>
+        <p class="text-sm font-semibold leading-6 text-gray-900 ">{{doc.name}}</p>
         <p class="rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">Complete</p>
       </div>
       <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
@@ -31,7 +31,7 @@
     <div class="flex flex-none items-center gap-x-4">
       <a (click)="getById(doc._id) ; openPreview = true" class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">Voir<span class="sr-only">Voir</span></a>
 
-      <a (click)="getById(doc._id)" class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">Modifier<span class="sr-only">Modifier</span></a>
+      <a (click)="updateDoc(doc._id)" class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">Modifier<span class="sr-only">Modifier</span></a>
 
       <a (click)="getById(doc._id) ; openDelete = true" class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">Suppr.<span class="sr-only">Suppr.</span></a>
 

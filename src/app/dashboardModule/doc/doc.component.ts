@@ -29,6 +29,26 @@ export class DocComponent implements OnInit {
       this.listDocs()
   }
 
+  newDoc = (doc:object ) => {
+    // Unset currentForm
+    console.log('We saving new Doc :', doc)
+    this.currentForm  = {}
+
+    if (this.openForm === false){
+      this.openForm = true;
+    }
+
+    if(doc){
+
+    }
+  }
+
+
+
+  updateDoc = (id:string) => {
+    this.getById(id)
+    this.openForm = true
+  }
   closePart(part: string) {
     if(part === 'delete'){
       this.openDelete = false;
@@ -97,6 +117,8 @@ export class DocComponent implements OnInit {
       }
     })
   }
+
+
   ngOnInit() {
     this.listDocs();
   }

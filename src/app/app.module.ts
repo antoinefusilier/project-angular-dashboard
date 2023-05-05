@@ -15,6 +15,9 @@ import { ApiCheckInterceptor } from './appInterceptor/api-check.interceptor';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { UserMemoryService } from './appServices/user-memory.service';
 import { LoaderComponent } from './appComponents/loader/loader.component';
+
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +29,7 @@ import { LoaderComponent } from './appComponents/loader/loader.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
     // InMemoryWebApiModule.forRoot(UserMemoryService)
   ],
   providers: [
