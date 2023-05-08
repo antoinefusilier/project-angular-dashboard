@@ -17,19 +17,20 @@
       <div class="mt-6 -mb-6 flow-root divide-y divide-gray-200 border-t border-gray-200">
         <div *ngFor="let prod of products" class="py-6 sm:flex">
           <div class="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
-            <svg role="img" class="o-icon o-icon--large">
-              <use [attr.xlink:href]="prod[71].elements[1].elements[0].attributes"></use>
-            </svg>
-            <img *ngIf="prod[45]" src="https://files.etsleblanc.com/product/no_picture.jpg" alt="Brass puzzle in the shape of a jack with overlapping rounded posts." class="h-20 w-20 flex-none rounded-md object-cover object-center sm:h-48 sm:w-48">
+
+            <img  src="https://files.etsleblanc.com/product/image/base/{{[prod.mpn]}}" alt="Brass puzzle in the shape of a jack with overlapping rounded posts." class="h-20 w-20 flex-none rounded-md object-cover object-center sm:h-48 sm:w-48">
             <div class="min-w-0 flex-1 pt-1.5 sm:pt-0">
               <h3 class="text-sm font-medium text-gray-900">
-                <a href="#">{{'werwer'}}</a>
+                <a href="#">{{prod.name}}</a>
+                <span *ngIf="prod.active === 1" class="bg-green-50 ml-4 ring-green-600/20 rounded-md ring-inset ring-1 p-1">Actif</span>
+                <span *ngIf="prod.active === 0" class="bg-red-50 ml-4 ring-red-600/20 rounded-md ring-inset ring-1 p-1">Inactif</span>
               </h3>
+              <p class="rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">{{prod.reference}}</p>
               <p class="truncate text-sm text-gray-500">
-                <span>Brass</span>
+                <span>{{prod.description}}</span>
                 <span class="mx-1 text-gray-400" aria-hidden="true">&middot;</span>
-                <span>3&quot; x 3&quot; x 3&quot;</span>
               </p>
+              <p class="mt-1 font-medium text-gray-900"></p>
               <p class="mt-1 font-medium text-gray-900">$95.00</p>
             </div>
           </div>
