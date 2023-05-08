@@ -11,6 +11,10 @@ import { environment } from 'src/environments/environment.development';
 export class ListComponent {
 
   @Input('ngModel') products: Array<any> = [];
+  @Input() lang:string = 'fr';
+  @Input() api_mode: boolean = false;
+  @Input() nbrProductPerPage: number = 100;
+  @Input() page: number = 8;
 
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
@@ -20,11 +24,17 @@ export class ListComponent {
     private http: HttpClient,
     private as: AlertsService
     ){
-      this.getProductsByDbPresta()
+      this.getProducts(
+        this.lang,
+        0 + ((this.page-1)*this.nbrProductPerPage),
+        this.nbrProductPerPage * this.page,
+        this.api_mode,
+        'M000195333'
+      )
   }
 
-  getProductsByDbPresta = () => {
-    this.http.get(`${environment.backEnd.cr_product}/get/${0}/${10}`,{})
+  getProducts = (lang:string = 'fr', offset: number = 0, limit: number = 10,api: boolean = false, ref:string | undefined) => {
+    this.http.get(`${environment.backEnd.cr_product}/get/${lang}/${offset}/${limit}/${api}/${ref}`,{})
       .subscribe((v:any)=>{
         console.log(v)
         this.products = v;
