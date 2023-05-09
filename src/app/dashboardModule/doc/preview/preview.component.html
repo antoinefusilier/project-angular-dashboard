@@ -53,10 +53,14 @@
     </div>
 
   </div>
+  <div class="w-full">
+      <video src="{{doc.videoURL}}" autoplay="true"></video>
+  </div>
   <div  class="w-full"style="height: 500px">
+    <iframe [id]="doc._id" class="inline-block w-full min-h-full"  src="https://docs.google.com/document/d/e/2PACX-1vSqCRV8_DQrUGFtTlU78Wds2TfWAu9MBsPTPewrAPwxkeoX2UEBTcLhI_yBKOX6Fk4ikCLJjHZHQyRU/pub?embedded=true"></iframe>
+  </div>
 
-      <iframe [id]="doc._id" class="inline-block w-full min-h-full"  src="https://docs.google.com/document/d/e/2PACX-1vSqCRV8_DQrUGFtTlU78Wds2TfWAu9MBsPTPewrAPwxkeoX2UEBTcLhI_yBKOX6Fk4ikCLJjHZHQyRU/pub?embedded=true"></iframe>
-    </div>
+
 </div>
 </div>
 </div>

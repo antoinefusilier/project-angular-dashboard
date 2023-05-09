@@ -27,14 +27,14 @@
 <ul  role="list" class="divide-y divide-gray-100 m-2">
   <li (mouseleave)="openOptions = false" ng-model="docList" *ngFor="let doc of docList" [id]="doc._id" class="flex flex-row items-center justify-between gap-x-6 py-5 text-gray-300 hover:bg-gray-200 hover:text-white rounded-md p-1">
     <img class="aspect-[3/2]  h-20 w-20 rounded-full rounded-2xl object-cover " src="{{doc.imageURL}}" alt="">
-    <div (click)="openPreview = true" class="min-w-0">
+    <div (click)="openPreview = true" class="block w-full">
 
-      <div class="flex items-start gap-x-3">
+      <div class="flex items-start gap-x-3 w-50">
         <p class="text-sm font-semibold leading-6 text-gray-900 ">{{doc.name}}</p>
-        <p class="rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">Complete</p>
+        <p class="rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">{{doc.group}}</p>
       </div>
       <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
-        <p class="whitespace-nowrap">{{doc.description}} <time datetime="2023-03-17T00:00Z">March 17, 2023</time></p>
+        <p class="whitespace-nowrap">{{doc.description}} </p>
         <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
           <circle cx="1" cy="1" r="1" />
         </svg>
