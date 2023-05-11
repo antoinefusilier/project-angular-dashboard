@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo, getRedirectResult, GithubAuthProvider, UserInfo, AuthCredential, UserCredential, AuthProvider, OAuthCredential, signOut } from 'firebase/auth';
-import { environment as ENV, environment} from 'src/environments/environment.development';
+import { environment as ENV, environment} from 'src/environments/environment';
 import { User } from '../appInterfaces/user';
 
 import { UserMemoryService } from './user-memory.service';

@@ -28,8 +28,11 @@ export const environment = {
     invalid_return_key: "5QMnr!j*eL^3Xze9Cd2F8aH95NvH2gaG8SMEL7a&wyQPTr2n4fMmNgD%%&^&"
   },
   backEnd: {
-    url: "http://leblanc.sahirato.tech/",
-    cr_auth: "http://leblanc.sahirato.tech/auth",
-    cr_dompro_sync: "http://leblanc.sahirato.tech/dpro"
+    url: "https://sahirato.tech/",
+    cr_auth: "https://sahirato.tech/auth",
+    cr_dompro_sync: "https://sahirato.tech/dpro",
+    cr_product: "https://sahirato.tech/product",
+    cr_doc: "https://sahirato.tech/doc",
+    cr_divalto_sync: "https://sahirato.tech/diva"
   }
 };

@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { environment as ENV } from 'src/environments/environment.development';
+import { environment as ENV } from 'src/environments/environment';
 import { UserService } from '../appServices/user.service';
 import { User } from '../appInterfaces/user';
 import { createUrlTreeFromSnapshot } from '@angular/router';

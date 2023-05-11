@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { AlertsService } from 'src/app/appServices/alerts.service';
-import { environment } from 'src/environments/environment.development';
+// import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-doc',
