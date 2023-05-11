@@ -16,6 +16,9 @@ export class ListComponent {
   @Input() nbrProductPerPage: number = 100;
   @Input() page: number = 8;
 
+
+
+
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
     "Accept" : "application/json"

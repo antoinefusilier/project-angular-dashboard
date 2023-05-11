@@ -23,7 +23,8 @@ export const environment = {
     cr_auth: "http://localhost:3007/cr-auth",
     cr_dompro_sync: "http://localhost:3007/dompro-sync",
     cr_product: "http://localhost:3007/product-manager/product",
-    cr_doc: "http://localhost:3007/cr-doc"
+    cr_doc: "http://localhost:3007/cr-doc",
+    cr_divalto_sync: "http://localhost:3007/divalto-sync"
   }
 
 };

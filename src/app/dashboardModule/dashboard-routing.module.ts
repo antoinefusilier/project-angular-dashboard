@@ -18,6 +18,7 @@ import { PrestashopComponent } from './settings/prestashop/prestashop.component'
 import { SettingsComponent } from './settings/settings.component';
 import { UsersComponent } from './users/users.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { BridgeComponent } from './divalto-sync/bridge/bridge.component';
 
 const routes: Routes = [
   {
@@ -100,6 +101,11 @@ const routes: Routes = [
           {
             path: 'light-sync',
             component: LightSyncComponent,
+            outlet: 'divalto'
+          },
+          {
+            path: 'bridge',
+            component: BridgeComponent,
             outlet: 'divalto'
           },
           {

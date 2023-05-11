@@ -35,6 +35,7 @@ import { ConfirmDeleteComponent } from './doc/confirm-delete/confirm-delete.comp
 import { PreviewComponent } from './doc/preview/preview.component'
 import { FormsModule } from '@angular/forms';
 import { SearchDocComponent } from './doc/search-doc/search-doc.component';
+import { BridgeComponent } from './divalto-sync/bridge/bridge.component';
 // import { DomSanit }
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { UserMemoryService } from '../appServices/user-memory.service';
@@ -69,6 +70,7 @@ import { SearchDocComponent } from './doc/search-doc/search-doc.component';
     ConfirmDeleteComponent,
     PreviewComponent,
     SearchDocComponent,
+    BridgeComponent,
   ],
   imports: [
     CommonModule,
