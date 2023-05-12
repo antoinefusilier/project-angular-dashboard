@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnChanges, Input} from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sync-logs',
@@ -21,7 +22,7 @@ export class SyncLogsComponent  {
 
   testSyncLogs:any = async () => {
 
-    this.http.post<any>('http://leblanc.sahirato.tech/divalto/sync-logs',{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
+    this.http.post<any>(`${environment.backEnd.cr_divalto_sync}/sync-logs`,{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
     )
       .subscribe(data => {
         console.log('Données souscrites : ',data);

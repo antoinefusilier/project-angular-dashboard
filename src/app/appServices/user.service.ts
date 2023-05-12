@@ -72,7 +72,7 @@ export class UserService {
                 additionInfos: userData
               }
 
-              let req1 = this.http.post(`${environment.backEnd.cr_auth}/newUser`, body, {headers: header})
+              let req1 = this.http.post(`${environment.backEnd.cr_auth}/newUser`, JSON.stringify(body), {headers: header})
               req1.subscribe((value:any)=>{
                 console.log('Réponse du backEnd',value);
               })

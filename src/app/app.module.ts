@@ -17,6 +17,7 @@ import { UserMemoryService } from './appServices/user-memory.service';
 import { LoaderComponent } from './appComponents/loader/loader.component';
 
 import { FormsModule } from '@angular/forms';
+import { ErrorInterceptor } from './appInterceptor/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,12 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: ApiCheckInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ApiCheckInterceptor, multi: true},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+  }
   ],
   bootstrap: [AppComponent]
 })

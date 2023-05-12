@@ -17,6 +17,7 @@ export class BridgeComponent {
       name: 'price',
       description: 'Colonnes de la section prix des données articles dans la base Divalto',
       viewRequest: false,
+      viewAssigns: false,
       assigns: [
         {
           divalto: "art.\"ART_ID",
@@ -27,43 +28,43 @@ export class BridgeComponent {
         {
           divalto: "sart.\"SART_ID",
           bridge: "sart_id",
-          presta: "",
+          presta: [""],
           description: "Identifiant d'un article dans la table sous articles"
         },
         {
           divalto: "sart.\"REF",
           bridge: "product_reference",
-          presta: "_product_attribute.reference, _product_attribute_shop.reference",
+          presta: ["_product_attribute.reference", "_product_attribute_shop.reference"],
           description: "R�f�rence d'un article dans la table des sous-article"
         },
         {
           divalto: "art.\"REFAMR",
           bridge: "selling_discount_class",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "art.\"TVAART",
           bridge: "selling_vat_code",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "art.\"TVAARTA",
           bridge: "purchase_vat_code",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "art.\"VENUN",
           bridge: "selling_unit",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "ttcv.\"PRIXUNITAIRE",
           bridge: "selling_taxes",
-          presta: "_product_attribute.ecotax",
+          presta: ["_product_attribute.ecotax"],
           description: ""
         },
         {
@@ -75,7 +76,7 @@ export class BridgeComponent {
         {
           divalto: "art.\"MITARIFCOEF",
           bridge: "selling_calc_coef",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
@@ -93,7 +94,7 @@ export class BridgeComponent {
         {
           divalto: "tfo.\"HSDT",
           bridge: "purchase_price_end_date",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
@@ -105,7 +106,7 @@ export class BridgeComponent {
         {
           divalto: "tfo.\"PA",
           bridge: "purchase_price",
-          presta: "_product_attribute.wholesale_price",
+          presta: ["_product_attribute.wholesale_price"],
           description: ""
         },
         {
@@ -117,61 +118,61 @@ export class BridgeComponent {
         {
           divalto: "tfore.\"REM_0001",
           bridge: "supplier_discount_0001",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tfore.\"REMTYP_0001",
           bridge: "supplier_discount_type_0001",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tfore.\"REM_0002",
           bridge: "supplier_discount_0002",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tfore.\"REMTYP_0002",
           bridge: "supplier_discount_type_0002",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tfore.\"REM_0003",
           bridge: "supplier_discount_0003",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tfore.\"REMTYP_0003",
           bridge: "supplier_discount_type_0003",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tfore.\"REMCOD",
           bridge: "supplier_discount_code",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tar.\"TACOD",
           bridge: "selling_price_code",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tar.\"TADT",
           bridge: "selling_price_start_date",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tar.\"HSDT",
           bridge: "selling_price_end_date",
-          presta: "_product_attribute.available_date",
+          presta: ["_product_attribute.available_date"],
           description: ""
         },
         {
@@ -183,25 +184,25 @@ export class BridgeComponent {
         {
           divalto: "tar.\"HTCOD",
           bridge: "selling_taxe_price_type_rule",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tar.\"PUB",
           bridge: "selling_price_te",
-          presta: "_product_attribute.price",
+          presta: ["_product_attribute.price"],
           description: ""
         },
         {
           divalto: "tar.\"PUBUN",
           bridge: "selling_price_unit",
-          presta: "",
+          presta: [""],
           description: ""
         },
         {
           divalto: "tar.\"PPAR",
           bridge: "selling_price_multiple",
-          presta: "",
+          presta: [""],
           description: ""
         }
       ],

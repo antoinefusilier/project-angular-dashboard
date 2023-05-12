@@ -25,10 +25,22 @@ export class ApiCheckInterceptor implements HttpInterceptor {
     if (getCurrentUser){
       const CURRENT_USER = getCurrentUser;
       // console.log('Interception de la requetem, APPKEY', APP_KEY, CURRENT_USER)
-      return next.handle(request.clone({ setHeaders: { APP_KEY, CURRENT_USER,  Accept: 'application/json', ContentType: 'application/json'  }}))
-    } else {
+      return next.handle(request.clone({ setHeaders: { APP_KEY, CURRENT_USER,  Accept: 'application/json', ContentType: 'application/json', AccessControlAllowOrigin: 'https://sahirato.tech/*'  }}))
+    } else if (!getCurrentUser) {
+      this.alertService.warn(`Connexion...`, `Session actuellement vide`)
+      return next.handle(request.clone({ setHeaders: { APP_KEY,  Accept: ['application/json'], ContentType: 'application/json', AccessControlAllowOrigin: '*'  }}))
+    }else {
       this.alertService.error('HTTP Error', 'Erreur dans l\'authentification, ou votre compte, communication avec le serveur impossible, veuillez vous rapprocher d\'un administreur.')
-      return next.handle(request.clone({ setHeaders: { Accept: 'any', ContentType: 'any'  }}))
+      return next.handle(request.clone(
+        {
+          setHeaders:
+            {
+              Accept: 'application/json',
+              ContentType: 'application/json',
+              AccessControlAllowOrigin: 'https://sahirato.tech/'
+            }
+          }
+          ))
 
     }
     // let handle = next.handle(request.clone({ setHeaders: { Accept: 'any', ContentType: 'any'  }}));

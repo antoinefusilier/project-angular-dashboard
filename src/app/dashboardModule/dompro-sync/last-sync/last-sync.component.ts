@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-last-sync',
@@ -16,7 +17,7 @@ export class LastSyncComponent {
 
   testSyncLogs = async () => {
 
-    this.http.post<any>('http://leblanc.sahirato.tech/dpro/sync/logs',
+    this.http.post<any>(`${environment.backEnd.cr_dompro_sync}/sync/logs`,
       {
         orderBy: '',
         limit: 100,

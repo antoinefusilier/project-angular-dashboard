@@ -36,6 +36,7 @@ import { PreviewComponent } from './doc/preview/preview.component'
 import { FormsModule } from '@angular/forms';
 import { SearchDocComponent } from './doc/search-doc/search-doc.component';
 import { BridgeComponent } from './divalto-sync/bridge/bridge.component';
+import { RelatedComponent } from './welcome/related/related.component';
 // import { DomSanit }
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { UserMemoryService } from '../appServices/user-memory.service';
@@ -71,6 +72,7 @@ import { BridgeComponent } from './divalto-sync/bridge/bridge.component';
     PreviewComponent,
     SearchDocComponent,
     BridgeComponent,
+    RelatedComponent,
   ],
   imports: [
     CommonModule,
