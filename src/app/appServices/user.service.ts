@@ -22,13 +22,13 @@ export class UserService {
     private router: Router) { }
 
   signInWithGoogle = () => {
-    return new Promise((resolve, reject)=>{
+    return new Promise(async(resolve, reject)=>{
       const provider = new GoogleAuthProvider()
       const auth = getAuth();
       signInWithPopup(auth, provider)
         .then((result) => {
           // This gives you a Google Access Token. You can use it to access the Google API.
-          const credential: Credential | OAuthCredential | null = GoogleAuthProvider.credentialFromResult(result);
+          const credential: Credential | OAuthCredential | null =  GoogleAuthProvider.credentialFromResult(result);
           console.log('await credential');
           if (credential){
             console.log('credential');
@@ -64,7 +64,8 @@ export class UserService {
               // [FR] Demande de vérification et enregistrement de l'utilisateur au backEnd
               let header = new HttpHeaders({
                 "Content-Type" : "application/json",
-                "Accept" : "application/json"
+                "Accept" : ["application/json", "application/xml"],
+                "AccessControlAllowOrigin": "*"
               })
               let body = {
                 provider: 'google',
@@ -152,7 +153,8 @@ export class UserService {
     return new Promise((resolve,reject)=>{
       let header = new HttpHeaders({
         "Content-Type" : "application/json",
-        "Accept" : "application/json"
+                "Accept" : ["application/json", "application/xml"],
+                "AccessControlAllowOrigin": "*"
       })
       let body = {
         user: user

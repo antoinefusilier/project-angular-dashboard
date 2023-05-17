@@ -24,6 +24,12 @@ export class RelatedComponent {
       description: "Tableau de bord Prestashop",
       img: "https://upload.wikimedia.org/wikipedia/fr/7/7d/Prestashop-logo.png",
       link: 'https://etsleblanc.fr/ggh37uzgymaafwiv'
+    },
+    {
+      title : "Divalto Web",
+      description: "Accès web à Divalto",
+      img: "https://syxperiane.com/wp-content/uploads/2022/08/logo-divalto-1.png",
+      link: 'https://webapp.divaltocloud.com/lcweb/'
     }
   ]
 }

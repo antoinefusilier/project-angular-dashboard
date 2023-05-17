@@ -15,7 +15,8 @@ export class DashboardComponent {
   title = 'angular_app';
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
-    "Accept" : "application/json"
+                "Accept" : ["application/json", "application/xml"],
+                "AccessControlAllowOrigin": "*"
   })
   callBackDomproSync:any;
 

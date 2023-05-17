@@ -76,7 +76,8 @@ export class AppComponent implements OnInit {
 
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
-    "Accept" : "application/json"
+                "Accept" : ["application/json", "application/xml"],
+                "AccessControlAllowOrigin": "*"
   })
 
   pushInputData = () => {

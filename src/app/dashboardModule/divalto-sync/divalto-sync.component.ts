@@ -14,7 +14,8 @@ export class DivaltoSyncComponent {
 
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
-    "Accept" : "application/json"
+                "Accept" : ["application/json", "application/xml"],
+                "AccessControlAllowOrigin": "*"
   })
 
   params = new HttpParams();
@@ -31,7 +32,7 @@ export class DivaltoSyncComponent {
     },
     withCredential: false
   }
- 
+
   // Méthode de requete API vers Node server pour tester la connection à la base sql server de Divalo
   testSqlServDivaltoConnect:any = async () => {
     console.log('variable activation :', this.active_presta_upd_price_qty);

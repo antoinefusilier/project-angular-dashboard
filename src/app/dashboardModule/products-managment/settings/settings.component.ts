@@ -9,7 +9,8 @@ import { Component } from '@angular/core';
 export class SettingsComponent {
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
-    "Accept" : "application/json"
+                "Accept" : ["application/json", "application/xml"],
+                "AccessControlAllowOrigin": "*"
   })
 
 constructor(private http: HttpClient){
