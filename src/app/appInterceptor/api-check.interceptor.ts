@@ -25,7 +25,7 @@ export class ApiCheckInterceptor implements HttpInterceptor {
     if (getCurrentUser){
       const CURRENT_USER = getCurrentUser;
       // console.log('Interception de la requetem, APPKEY', APP_KEY, CURRENT_USER)
-      return next.handle(request.clone({ setHeaders: { APP_KEY, CURRENT_USER,  Accept: 'application/json', ContentType: 'application/json', AccessControlAllowOrigin: '*'  }}))
+      return next.handle(request.clone({ setHeaders: { APP_KEY, CURRENT_USER,  Accept: ['application/json', 'application/xml'], ContentType: 'application/json', AccessControlAllowOrigin: '*'  }}))
     } else if (!getCurrentUser) {
       this.alertService.warn(`Connexion...`, `Session actuellement vide`)
       return next.handle(request.clone({ setHeaders: { APP_KEY,  Accept: ['application/json', 'application/xml'], ContentType: 'application/json', AccessControlAllowOrigin: '*'  }}))

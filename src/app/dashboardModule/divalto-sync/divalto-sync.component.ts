@@ -14,8 +14,8 @@ export class DivaltoSyncComponent {
 
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
-                "Accept" : ["application/json", "application/xml"],
-                "AccessControlAllowOrigin": "*"
+    "Accept" : ["application/json", "application/xml"],
+    "Access-Control-Allow-Origin": "*"
   })
 
   params = new HttpParams();

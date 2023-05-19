@@ -65,7 +65,7 @@ export class UserService {
               let header = new HttpHeaders({
                 "Content-Type" : "application/json",
                 "Accept" : ["application/json", "application/xml"],
-                "AccessControlAllowOrigin": "*"
+                "Access-Control-Allow-Origin": "*"
               })
               let body = {
                 provider: 'google',
@@ -153,8 +153,8 @@ export class UserService {
     return new Promise((resolve,reject)=>{
       let header = new HttpHeaders({
         "Content-Type" : "application/json",
-                "Accept" : ["application/json", "application/xml"],
-                "AccessControlAllowOrigin": "*"
+        "Accept" : ["application/json", "application/xml"],
+        "Access-Control-Allow-Origin": "*"
       })
       let body = {
         user: user

@@ -26,8 +26,8 @@ export class DocComponent implements OnInit {
 
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
-                "Accept" : ["application/json", "application/xml"],
-                "AccessControlAllowOrigin": "*"
+    "Accept" : ["application/json", "application/xml"],
+    "Access-Control-Allow-Origin": "*"
   })
   constructor(private http: HttpClient,
     private AS: AlertsService){

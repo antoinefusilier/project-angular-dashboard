@@ -16,8 +16,8 @@ export class DomproSyncComponent {
 
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
-                "Accept" : ["application/json", "application/xml"],
-                "AccessControlAllowOrigin": "*"
+    "Accept" : ["application/json", "application/xml"],
+    "Access-Control-Allow-Origin": "*"
   })
   constructor (private http: HttpClient) {
 

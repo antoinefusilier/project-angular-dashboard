@@ -15,7 +15,7 @@ export class WelcomeComponent {
   headers = new HttpHeaders({
     "Content-Type" : "application/json",
     "Accept" : ["application/json", "application/xml"],
-      "AccessControlAllowOrigin": "*"
+    "Access-Control-Allow-Origin": "*"
   })
 
   constructor(private http: HttpClient){
