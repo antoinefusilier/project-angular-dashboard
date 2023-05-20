@@ -20,6 +20,7 @@ export class ListComponent {
 
 
   @Input('ngModel') settings :any = {
+    loading: true,
     productsPerPage : 10,
     page: 1,
     api: false,
@@ -54,10 +55,10 @@ export class ListComponent {
       this.settings.moduleRef = null;
       this.settings.moduleName = e;
     } else if (typeForm === 'perPage'){
-      if(e.length > 1){
+      // if(e.length > 1){
         this.settings.productsPerPage = e;
 
-      }
+      // }
 
     } else if (typeForm === 'searchBy'){
       this.settings.searchBy = e;
@@ -134,17 +135,30 @@ export class ListComponent {
     console.log('Parsing page '+this.page+ 'to'+ page )
   }
 
+  valueInner = (pId: string, text:any) => {
+    let para = document.getElementById(pId)
+    if(para){
+
+      return para.innerHTML = text
+    }
+
+  }
+
   getProducts = () => {
 
     console.log('Research :', this.settings)
-
+    this.settings.loading = true;
     this.http.get(`${environment.backEnd.cr_product}/get/${this.settings.lang}/${0 + ((this.settings.page-1)*this.settings.productsPerPage)}/${this.settings.productsPerPage * this.settings.page}/${this.settings.api}/${this.settings.moduleRef}/${this.settings.moduleName}`,{})
       .subscribe((v:any)=>{
         console.log(v)
         this.products = v;
+        this.settings.loading = false;
+
       },(error)=>{
         this.as.error('Erreur aucun produit', 'Erreur lors de la récupération des produits :(...')
         console.error(error)
+        this.settings.loading = false;
+
 
       })
   }

@@ -116,7 +116,34 @@
 
         </div>
       </div>
+      <div *ngIf="settings.loading === true" class="flex m-3 w-64 h-64 align-center justify-center m-auto">
+        <div [id]="'loader'" class="absolute flex flex-col w-64 h-64 bg-gradient-to-r from-gray-800 via-gray-500 to-gray-300 background-animate rounded-full verflow-hidden bg-white shadow z-50 justify-center align-center">
+          <div class="px-4 py-5 sm:p-6 rounded-full bg-white w-32 h-32 xs:h-40 xs:w-40 justify-center opacity-75 align-center m-auto logo-animate ">
+            <img src="assets/logo_leblanc.png" class="logo-move" alt="">
+            <!-- Content goes here -->
+          </div>
 
+          <div role="status" class="absolute opacity-75 -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2" >
+            <svg aria-hidden="true" class="w-full h-full mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-red-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/><path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/></svg>
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8">
+            <div class="pointer-events-auto flex items-center justify-between gap-x-6 bg-white px-6 py-2.5 sm:rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5">
+              <img src="assets/error_icon_0001.gif" alt="" width="10%">
+              <p ng-model="message" class=" leading-6 text-gray-600">
+                <a href="#"><strong class="font-semibold"></strong>Chargement...&nbsp;<span aria-hidden="true">&rarr;</span></a>
+                <a class="text-sm">Chargement des produits...</a>
+              </p>
+              <button type="button" class="-m-1.5 flex-none p-1.5">
+                <span class="sr-only">Dismiss</span>
+                <svg class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div *ngIf="products.length > 0" class="mt-6 -mb-6 flow-root divide-y divide-gray-200 border-t border-gray-200">
         <div *ngFor="let prod of products" class="py-6 sm:flex">
@@ -144,7 +171,9 @@
               <label for="title" class="sr-only">Title</label>
               <input type="text" name="title" id="title" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0" placeholder="Titre" value="{{prod.productLang[0].name}}">
               <label for="description" class="sr-only">Description</label>
-              <textarea rows="2" name="description" id="description" class="block w-full resize-none border-0 py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="E©rire une description..." value="{{prod.productLang[0].description}}"></textarea>
+
+                <textarea  rows="2" name="description" id="description" class="block w-full h-fill resize-none border-0 py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="E©rire une description..." value="{{prod.productLang[0].description}}"></textarea>
+
 
               <!-- Spacer element to match the height of the toolbar -->
               <div aria-hidden="true">
@@ -342,9 +371,20 @@
                 <span *ngIf="prod.product[0].active === 1" class="bg-green-50 ml-4 ring-green-600/20 rounded-md ring-inset ring-1 p-1">Actif</span>
                 <span *ngIf="prod.product[0].active === 0" class="bg-red-50 ml-4 ring-red-600/20 rounded-md ring-inset ring-1 p-1">Inactif</span>
               </h3>
-              <p class="rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">{{prod.product[0].reference}}</p>
-              <p class="truncate text-sm text-gray-500">
-                <span name="description">{{prod.productLang[0].description}}</span>
+              <div class="flex flex-row justify-between">
+                <p>
+                  Module :
+                  <span class="rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">{{prod.product[0].reference}}</span>
+                </p>
+                <p>
+                  Ref. four :
+                  <span class="rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset text-orange-700 bg-orange-50 ring-orange-600/20">{{prod.product[0].supplier_reference}}</span>
+                </p>
+
+
+              </div>
+              <p class="truncate text-sm text-gray-500" [innerHTML]="prod.productLang[0].description">
+                <span name="description"></span>
                 <span class="mx-1 text-gray-400" aria-hidden="true">&middot;</span>
               </p>
               <p class="mt-1 font-medium text-gray-900"></p>
