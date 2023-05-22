@@ -4,12 +4,21 @@ import { AppComponent } from './app.component';
 import { IssueComponent } from './appComponents/issue/issue.component';
 import { UserMemoryService } from './appServices/user-memory.service';
 import { AuthGuard } from './auth.guard';
+import { WelcomeModule } from './welcome/welcome.module';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'welcome',
     pathMatch: 'full'
+  },
+  {
+    path: 'doc',
+    loadChildren: () => import('./doc/doc.module').then(m=>m.DocModule)
+  },
+  {
+    path: 'welcome',
+    loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomeModule)
   },
   // Module dahboard Guard by AuthUser
   {

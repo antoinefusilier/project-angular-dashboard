@@ -1,0 +1,14 @@
+<div class="mx-auto max-w-[40rem] lg:mx-0 lg:max-w-none lg:flex-none">
+  <ul role="list"
+    class="space-y-10 text-sm leading-6 text-slate-700 lg:sticky lg:top-0 lg:-mt-16 lg:h-screen lg:w-72 lg:overflow-y-auto lg:py-16 lg:pr-8 lg:[mask-image:linear-gradient(to_bottom,transparent,white_4rem,white)]">
+    <li *ngFor="let doc of docs"> <a href="#{{doc.name}}" class="font-semibold text-slate-900">
+    {{doc.title}}
+      </a>
+      <ul *ngIf="doc.subParts" role="list" class="mt-4 space-y-2 border-l border-slate-200 pl-6">
+        <li *ngFor="let part of doc.subParts"><a href="#{{part.name}}">
+            {{part.title}}
+          </a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

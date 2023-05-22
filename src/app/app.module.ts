@@ -18,6 +18,9 @@ import { LoaderComponent } from './appComponents/loader/loader.component';
 
 import { FormsModule } from '@angular/forms';
 import { ErrorInterceptor } from './appInterceptor/error.interceptor';
+import { RouterModule } from '@angular/router';
+import { WelcomeModule } from './welcome/welcome.module';
+import { DocModule } from './doc/doc.module';
 
 @NgModule({
   declarations: [
@@ -27,10 +30,12 @@ import { ErrorInterceptor } from './appInterceptor/error.interceptor';
     LoaderComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    DocModule,
     // InMemoryWebApiModule.forRoot(UserMemoryService)
   ],
   providers: [
