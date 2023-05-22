@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ADAC</string>
+    <string name="title_activity_main">ADAC</string>
+    <string name="package_name">adac.sahirato.tech</string>
+    <string name="custom_url_scheme">adac.sahirato.tech</string>
+</resources>

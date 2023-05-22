@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AlertsService } from 'src/app/appServices/alerts.service';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-bridge',
@@ -348,7 +348,7 @@ export class BridgeComponent {
     {
       id: 2,
       title: 'Section Publique',
-      name: 'price',
+      name: 'public',
       description: 'Colonnes de la section publique des données articles dans la base Divalto',
       viewRequest: false,
       requestDivalto: `SELECT DISTINCT
@@ -493,7 +493,7 @@ export class BridgeComponent {
     {
       id: 3,
       title: 'Section Stock',
-      name: 'price',
+      name: 'stock',
       description: 'Colonnes de la section stock des données articles dans la base Divalto',
       viewRequest: false,
       requestDivalto: `SELECT DISTINCT
@@ -638,7 +638,7 @@ export class BridgeComponent {
     {
       id: 4,
       title: 'Section Admin',
-      name: 'price',
+      name: 'admin',
       description: 'Colonnes de la section administratif des données articles dans la base Divalto',
       viewRequest: false,
       requestDivalto: `SELECT DISTINCT
@@ -783,7 +783,7 @@ export class BridgeComponent {
     {
       id: 5,
       title: 'Section Ref',
-      name: 'price',
+      name: 'ref',
       description: 'Colonnes de la section des références des données articles dans la base Divalto',
       viewRequest: false,
       requestDivalto: `SELECT DISTINCT
@@ -932,11 +932,23 @@ export class BridgeComponent {
     private as: AlertsService
   ){}
 
-  updateBridge = async () => {
+
+  headers = new HttpHeaders({
+    "Content-Type" : "application/json",
+    "Accept" : ["application/json", "application/xml"],
+    "Access-Control-Allow-Origin": "*"
+  })
+
+  updateBridge = async (section:string) => {
     this.http.post(`${environment.backEnd.cr_divalto_sync}/productToBridge`,
       {
-        bridgeSection: 'price',
+        bridgeSection: section,
         clear: true
+      }, {headers: this.headers}).subscribe((v:any)=>{
+        console.log('Callback update bridge data', v);
+      }, (error)=>{
+        this.as.error(`Erreur lors de la mise à jour passerelle`,`Une erreur est survenue lors de la mise à jour des données en base passerelle`)
+        console.error(error)
       })
   }
 
