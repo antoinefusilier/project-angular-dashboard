@@ -23,15 +23,14 @@ export class WelcomeComponent {
       name: 'joinus',
       description: 'Faire partit du projet. Nous rejoindre dans le développement de cette application et la continuité du projet.',
 
-    }
-  ],
-  outMod: [
-
-    {
+    }, {
       title: 'Documentation',
       name: 'doc',
       description: 'Documentation générale de l\'application et de son dévelopment',
     }
+  ],
+  outMod: [
+
   ]
   }
 }

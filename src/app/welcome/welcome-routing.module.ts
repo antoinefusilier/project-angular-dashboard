@@ -4,6 +4,7 @@ import { HeroComponent } from './hero/hero.component';
 import { ShowingComponent } from './showing/showing.component';
 import { JoinusComponent } from './joinus/joinus.component';
 import { WelcomeComponent } from './welcome.component';
+import { DocComponent } from './doc/doc.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
         path: '',
         redirectTo: 'hero',
         pathMatch:"full"
+      },
+      {
+        path: 'doc',
+        component: DocComponent
       },
       {
         path: 'hero',

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnChanges, Input} from '@angular/core';
 import { environment } from 'src/environments/environment';
+import {Interval, intervalToDuration} from 'date-fns';
 
 @Component({
   selector: 'app-sync-logs',
@@ -18,6 +19,17 @@ export class SyncLogsComponent  {
 
   ngOnChange(){
 
+  }
+
+  dateDiffer = (date1:number | Date,date2:number | Date) => {
+
+    let inter: Interval = {start: new Date(date1),end: new Date(date2)}
+    // let dur:any;
+
+    // console.log(inter)
+    // let dur = intervalToDuration(inter)
+    // console.log('durrrrationnnnn', dur);
+    return inter
   }
 
   testSyncLogs:any = async () => {

@@ -6,6 +6,9 @@ import { HeroComponent } from './hero/hero.component';
 import { JoinusComponent } from './joinus/joinus.component';
 import { ShowingComponent } from './showing/showing.component';
 import { WelcomeComponent } from './welcome.component';
+import { DocComponent } from './doc/doc.component';
+import { NavComponent } from './doc/nav/nav.component';
+import { ViewerComponent } from './doc/viewer/viewer.component';
 
 
 @NgModule({
@@ -13,7 +16,10 @@ import { WelcomeComponent } from './welcome.component';
     HeroComponent,
     JoinusComponent,
     ShowingComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    DocComponent,
+    NavComponent,
+    ViewerComponent
   ],
   imports: [
     CommonModule,
