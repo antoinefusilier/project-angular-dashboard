@@ -943,13 +943,26 @@ export class BridgeComponent {
     this.http.post(`${environment.backEnd.cr_divalto_sync}/productToBridge`,
       {
         bridgeSection: section,
-        clear: true
+        clear: true,
+        cms: true,
+        envDb: 'prod'
       }, {headers: this.headers}).subscribe((v:any)=>{
         console.log('Callback update bridge data', v);
       }, (error)=>{
         this.as.error(`Erreur lors de la mise à jour passerelle`,`Une erreur est survenue lors de la mise à jour des données en base passerelle`)
         console.error(error)
       })
+  }
+
+  updateCMS = async (envDb:any) => {
+    this.http.patch(`${environment.backEnd.cr_divalto_sync}/updatePresta`,
+    {
+       envDb: 'prod'
+    }, {headers: this.headers}).subscribe((v:any)=>{
+      console.log('Retour de la mise à jour article', v)
+    },(error) => {
+      this.as.error(`Erreur lors de la mise à jour article`,`Erreur`)
+    })
   }
 
   getBridgePrice = async () => {

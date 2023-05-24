@@ -26,10 +26,10 @@ export class SyncLogsComponent  {
     let inter: Interval = {start: new Date(date1),end: new Date(date2)}
     // let dur:any;
 
-    // console.log(inter)
-    // let dur = intervalToDuration(inter)
-    // console.log('durrrrationnnnn', dur);
-    return inter
+    console.log(inter)
+    let dur = intervalToDuration(inter)
+    console.log('durrrrationnnnn', dur);
+    return dur
   }
 
   testSyncLogs:any = async () => {

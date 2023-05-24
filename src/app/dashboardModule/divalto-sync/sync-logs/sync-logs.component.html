@@ -21,7 +21,7 @@
           <table class="min-w-full divide-y divide-gray-700">
             <thead>
               <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">ID</th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0"></th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Status</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Prod. détectés</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Prod. Passerelle</th>
@@ -36,7 +36,8 @@
             </thead>
             <tbody class="divide-y divide-gray-800">
               <tr ng-model="callBackDivaltoSync" *ngFor="let log of callBackDivaltoSync">
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{log._id}}</td>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
+                  <button>Voir</button></td>
 
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
                   <span class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">{{log.status}}</span>
@@ -47,12 +48,13 @@
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.errors.length}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.messages.length}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.alerts.length}}</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.startToBrigeDate}}</td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.startToBridgeDate}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.bridgeCompleteDate}}</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{this.dateDiffer(log.bridgeCompleteDate,log.startToBrigeDate)}}</td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{this.dateDiffer(log.startToBridgeDate,log.bridgeCompleteDate).seconds}}s</td>
 
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.bridgeCompleteDate}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.bridgeCompleteDate}}</td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{this.dateDiffer(log.startToBridgeDate,log.bridgeCompleteDate).seconds}}s</td>
 
               </tr>
 
