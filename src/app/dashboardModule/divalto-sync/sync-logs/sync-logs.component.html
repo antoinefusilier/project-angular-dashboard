@@ -25,13 +25,17 @@
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Status</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Prod. détectés</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Prod. Passerelle</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Occur. Passerelle et CMS</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Prod. Mise à jour</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Erreurs</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Messages</th>
                 <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Alertes</th>
-                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Date et Heure début</th>
-                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Date et Heure fin</th>
-                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Durée</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">D & H Début (Passerelle)</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">D & H fin (Passerelle)</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Durée (Passerelle)</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">D & H Début (Prestashop)</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">D & H fin (Prestashop)</th>
+                <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-white">Durée (Prestashop)</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-800">
@@ -44,17 +48,33 @@
                 </td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.rowsDetectedCount}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.bridgeRowsCount}}</td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.occurBridgeCMS}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.finalDbRowsCount}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.errors.length}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.messages.length}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.alerts.length}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.startToBridgeDate}}</td>
                 <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.bridgeCompleteDate}}</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{this.dateDiffer(log.startToBridgeDate,log.bridgeCompleteDate).seconds}}s</td>
+                <td  class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
+                  <a *ngIf="(log.startToBridgeDate &&  log.bridgeCompleteDate)|| (log.startToBridgeDate && log.status === 'En cours')">
+                     {{this.dateDiffer(log.startToBridgeDate,log.bridgeCompleteDate? log.bridgeCompleteDate: null).hours}}h
+                  {{this.dateDiffer(log.startToBridgeDate,log.bridgeCompleteDate? log.bridgeCompleteDate: null).minutes}}m
+                  {{this.dateDiffer(log.startToBridgeDate,log.bridgeCompleteDate? log.bridgeCompleteDate: null).seconds}}s
+                  </a>
 
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.bridgeCompleteDate}}</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.bridgeCompleteDate}}</td>
-                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{this.dateDiffer(log.startToBridgeDate,log.bridgeCompleteDate).seconds}}s</td>
+                </td>
+
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.startToFinalDate}}</td>
+                <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{log.finaleCompleteDate}}</td>
+
+                <td  class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
+                  <a *ngIf="(log.startToFinalDate &&  log.finaleCompleteDate)|| (log.startToFinalDate && log.status === 'En cours')">
+                    {{this.dateDiffer(log.startToFinalDate,log.finaleCompleteDate? log.finaleCompleteDate: null).hours}}h
+                    {{this.dateDiffer(log.startToFinalDate,log.finaleCompleteDate? log.finaleCompleteDate: null).minutes}}m
+                    {{this.dateDiffer(log.startToFinalDate,log.finaleCompleteDate? log.finaleCompleteDate: null).seconds}}s
+                  </a>
+                </td>
+                <!-- <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">{{this.dateDiffer(log.startToBridgeDate,log.bridgeCompleteDate).seconds}}s</td> -->
 
               </tr>
 
