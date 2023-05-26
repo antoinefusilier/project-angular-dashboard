@@ -13,11 +13,23 @@ export class SyncLogsComponent  {
   @Input('ngModel') callBackDivaltoSync: Array<any> = [];
 
 
+  protected settings = {
+    loading : true
+  }
+
   constructor(private http: HttpClient){
     this.testSyncLogs()
   }
 
   ngOnChange(){
+
+  }
+  startSync = () => {
+    this.http.post<any>(`${environment.backEnd.cr_divalto_sync}/sync-logs`,{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
+    )
+      .subscribe(data => {
+        console.log('Données souscrites : ',data);
+      })
 
   }
 
@@ -34,11 +46,15 @@ export class SyncLogsComponent  {
 
   testSyncLogs:any = async () => {
 
+    this.settings.loading = true;
+
     this.http.post<any>(`${environment.backEnd.cr_divalto_sync}/sync-logs`,{ title: 'Test de connection à la base de donnée Divalto', updPresta: true},
     )
       .subscribe(data => {
         console.log('Données souscrites : ',data);
         this.callBackDivaltoSync = data;
+        this.settings.loading = false;
+
       })
       console.log(this.callBackDivaltoSync);
   }

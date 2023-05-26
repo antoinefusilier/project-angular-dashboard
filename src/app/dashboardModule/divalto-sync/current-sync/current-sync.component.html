@@ -1,0 +1,122 @@
+<div *ngIf="this.justCurrent().length >0" class="overflow-hidden bg-gray-700 p-4 bg-gradient-to-r from-gray-500 via-dark-500 to-red-500 background-animate shadow  inline-block bottom-0 w-full ">
+  <div class="px-4 py-5 sm:px-6">
+    <!-- Content goes here -->
+    <!-- We use less vertical padding on card headers on desktop than on body sections -->
+    <h1 class="text-xl text-white">Synchronisation en cours ...</h1>
+  </div>
+  <div *ngFor="let syncLog of syncLogs"  >
+    <div *ngIf="syncLog.status === 'En cours'" class="flex flex-col bg-gray-200 bg-opacity-75 px-4 py-5 sm:p-6 w-full rounded-md flex flex-row align-middle justify-between mb-6">
+        <div>
+          <div class="flex flex-col">
+            <div class="flex flex-row justify-between align-middle w-content">
+              <div class="text-gray-700 font-semibold">
+
+                ERP Vers Passerelle
+              </div>
+              <!-- <p class="text-md block w-32 text-right text-gray-600 font-bold">
+                {{this.dateDiffer(syncLog.startToBridgeDate? syncLog.startToBridgeDate : null, syncLog.bridgeCompleteDate? syncLog.bridgeCompleteDate:null).hours}}h
+                {{this.dateDiffer(syncLog.startToBridgeDate? syncLog.startToBridgeDate : null, syncLog.bridgeCompleteDate? syncLog.bridgeCompleteDate:null).minutes}}m
+                {{this.dateDiffer(syncLog.startToBridgeDate? syncLog.startToBridgeDate : null, syncLog.bridgeCompleteDate? syncLog.bridgeCompleteDate:null).seconds}}s
+              </p>
+
+            <div class="w-full rounded-full h-full">
+              <div class="bg-gradient-to-r h-full from-gray-500 via-dark-500 to-orange-500 background-animate text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+              style="width: {{this.arround(( syncLog.bridgeRowsCount / syncLog.rowsDetectedCount) * 100)}}%">
+              {{( syncLog.bridgeRowsCount / syncLog.rowsDetectedCount) * 100}}%</div>
+            </div> -->
+          </div>
+          </div>
+
+          <div class="w-full rounded-full h-full mb-4">
+            Price
+            <div class="bg-gray-400 leading-none rounded-full">
+
+              <div *ngIf="syncLog.sections.priceBRC > 0" class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: {{( syncLog.sections.priceBRC / syncLog.sections.priceRDC) * 100}}%">
+                {{syncLog.sections.priceBRC}} / {{syncLog.sections.priceRDC}}
+                ({{this.arround( (syncLog.sections.priceBRC / syncLog.sections.priceRDC) * 100)}}%)
+              </div>
+              <p *ngIf="syncLog.sections.priceBRC <= 0" class="pl-5 text-md font-semibold text-white">
+                En attente...
+              </p>
+            </div>
+          </div>
+
+          <div class="w-full rounded-full h-full mb-4">
+            Ref
+            <div class="bg-gray-400 leading-none rounded-full">
+              <div *ngIf="syncLog.sections.refBRC > 0" class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: {{( syncLog.sections.refBRC / syncLog.sections.refRDC) * 100}}%">
+                {{syncLog.sections.refBRC}} / {{syncLog.sections.refRDC}}
+                ({{this.arround( (syncLog.sections.refBRC / syncLog.sections.refRDC) * 100)}}%)
+              </div>
+              <p *ngIf="syncLog.sections.refBRC <= 0" class="pl-5 text-md font-semibold text-white">
+                En attente...
+              </p>
+            </div>
+          </div>
+          <div class="w-full rounded-full h-full mb-4">
+            Public
+            <div class="bg-gray-400 leading-none rounded-full">
+              <div *ngIf="syncLog.sections.publicBRC > 0" class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: {{( syncLog.sections.publicBRC / syncLog.sections.publicRDC) * 100}}%">
+                {{syncLog.sections.publicBRC}} / {{syncLog.sections.publicRDC}}
+                ({{this.arround( (syncLog.sections.publicBRC / syncLog.sections.publicRDC) * 100)}}%)
+              </div>
+              <p *ngIf="syncLog.sections.publicBRC <= 0" class="pl-5 text-md font-semibold text-white">
+                En attente...
+              </p>
+            </div>
+          </div>
+
+
+
+          <div class="w-full rounded-full h-full mb-4">
+            Admin
+            <div class="bg-gray-400 leading-none rounded-full">
+              <div *ngIf="syncLog.sections.adminBRC > 0" class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: {{( syncLog.sections.adminBRC / syncLog.sections.adminRDC) * 100}}%">
+                {{syncLog.sections.adminBRC}} / {{syncLog.sections.adminRDC}}
+                ({{this.arround( (syncLog.sections.adminBRC / syncLog.sections.adminRDC) * 100)}}%)
+              </div>
+              <p *ngIf="syncLog.sections.adminBRC <= 0" class="pl-5 text-md font-semibold text-white">
+                En attente...
+              </p>
+            </div>
+          </div>
+
+          <div class="w-full rounded-full h-full mb-4">
+            Stock
+            <div class="bg-gray-400 leading-none rounded-full">
+              <div *ngIf="syncLog.sections.stockBRC > 0" class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: {{( syncLog.sections.stockBRC / syncLog.sections.stockRDC) * 100}}%">
+                {{syncLog.sections.stockBRC}} / {{syncLog.sections.stockRDC}}
+                ({{this.arround( (syncLog.sections.stockBRC / syncLog.sections.stockRDC) * 100)}}%)
+              </div>
+              <p *ngIf="syncLog.sections.stockBRC <= 0" class="pl-5 text-md font-semibold text-white">
+                En attente...
+              </p>
+            </div>
+          </div>
+
+      </div>
+      <div>
+        <div class="flex flex-row justify-between align-middle w-content">
+          <div class="text-gray-700 font-semibold">
+            Passerelle Vers Prestashop
+          </div>
+          <p class="text-md block w-32 text-right text-gray-600 font-bold">
+            {{this.dateDiffer(syncLog.startToFinalDate ? syncLog.startToFinalDate:null, syncLog.finaleCompleteDate? syncLog.finaleCompleteDate:null).hours}}h
+            {{this.dateDiffer(syncLog.startToFinalDate? syncLog.startToFinalDate:null, syncLog.finaleCompleteDate? syncLog.finaleCompleteDate:null).minutes}}m
+            {{this.dateDiffer(syncLog.startToFinalDate? syncLog.startToFinalDate:null, syncLog.finaleCompleteDate? syncLog.finaleCompleteDate:null).seconds}}s
+          </p>
+        </div>
+        <div class="w-full rounded-full h-full">
+          <div class=" text-xs font-medium text-blue-100 text-center bg-green-600 p-0.5 leading-none rounded-full" style="width: {{( syncLog.searchingOccur / syncLog.rowsDetectedCount) * 100}}%">  {{syncLog.occurBridgeCMS}} ( {{this.arround(( syncLog.searchingOccur / syncLog.rowsDetectedCount) * 100)}}%)
+          <p *ngIf="syncLog.searchingOccur > 100">
+            Recherche... {{syncLog.searchingOccur}} / {{syncLog.rowsDetectedCount}}
+          </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

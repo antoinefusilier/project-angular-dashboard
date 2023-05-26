@@ -7,6 +7,14 @@
 @tailwind utilities;
 @tailwind variants;
 
+.progress-animate {
+  background-size: 400%;
+
+  -webkit-animation: ProgressLoad 8s ease infinite;
+  -moz-animation: ProgressLoad 8s ease infinite;
+  animation: ProgressLoad 8s ease infinite;
+
+}
 
 .background-animate {
   background-size: 400%;
@@ -20,7 +28,19 @@
   animation: LogoZoom 1s ease infinite;
 }
 
+@keyframes ProgressLoad {
+  0%,
+  100%{
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+    /* background-position: 0% 50%; */
+  }
+  /* 50% { */
 
+  /* } */
+}
 @keyframes AnimationName {
   0%,
   100% {
