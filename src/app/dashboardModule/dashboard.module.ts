@@ -40,6 +40,7 @@ import { RelatedComponent } from './welcome/related/related.component';
 
 import { ProductsSettingsComponent } from './products-managment/products-settings/products-settings.component';
 import { CurrentSyncComponent } from './divalto-sync/current-sync/current-sync.component';
+import { StartSyncComponent } from './divalto-sync/start-sync/start-sync.component';
 // import { DomSanit }
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { UserMemoryService } from '../appServices/user-memory.service';
@@ -77,7 +78,8 @@ import { CurrentSyncComponent } from './divalto-sync/current-sync/current-sync.c
     BridgeComponent,
     RelatedComponent,
     ProductsSettingsComponent,
-    CurrentSyncComponent
+    CurrentSyncComponent,
+    StartSyncComponent
   ],
   imports: [
     CommonModule,
